@@ -1,5 +1,4 @@
 # Programowanie interfejsów webowych - laboratoria
-## int-web-lab
 
 Repozytorium zawierające kod źródłowy wykonanych zadań w ramach zajęć kursu programowanie interfejsów webowych.
 
