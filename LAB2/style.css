@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+:root{
+    --textHeader: rgb(173, 216, 230);
+    --text: rgb(231, 231, 201);
+    --textL1: rgb(231, 231, 221);
+    --bgMain: rgb(25,25,25);
+    --bgL1: rgba(50,50,50,0.8);
+    --bgL2: rgba(75,75,75,0.5);
+    --buttonMain: rgb(255,180,180);
+    --buttonHover: rgb(173, 122, 122);
+    --motion: all 0.3s ease 0s;
+}
+
+
+*{
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+    padding: 0;
+    margin: 0;
+    list-style-position: inside;
+}
+
+h1{
+    color: var(--textHeader);
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0px 0px 10px;
+
+}
+
+
+h2{
+    color: var(--textHeader);
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0px 0px 10px;
+
+}
+
+p{
+    color: var(--text);
+
+}
+
+
+li{
+    color: var(--text);
+    font-weight: 500;
+    margin: 10px 5px 10px 5px;
+}
+
+
+html, body{
+    max-width: 1075px;
+    background-color: var(--bgMain);
+}
+
+button{
+    cursor: pointer;
+    text-transform: uppercase;
+    color: var(--bgMain);
+    background-color: var(--buttonMain);
+    transition: var(--motion);
+}
+
+.text_prompt_button{
+    max-width: 80px;
+    min-height: 25px;
+    margin-left: 4px;
+    border-radius: 5px;
+    border:none;
+}
+
+.text_prompt_input{
+    min-width: 390px;
+    color: var(--textL1);
+    background-color: var(--bgL2);
+    border-radius: 5px;
+    border:none;
+    min-height: 25px;
+    margin-right: 4px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: var(--buttonHover)
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "top_section"
+    "content_section"
+}
+
+.top_section {
+    grid-area: top_section;
+    min-height: 215px;
+    min-width: 1075px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    ". header .";
+    background: linear-gradient(var(--bgL1),var(--bgL1)), url(https://64.media.tumblr.com/13f4c5301de1a827ff623f0b4da43586/tumblr_pjokh9jKMI1y27xwio1_250.gifv);
+    background-size:contain;
+}
+
+header{
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content_section{
+    grid-area: content_section;
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    grid-template-areas:
+    "text_date text_prompt ."
+    ". text_list ."
+}
+
+.text_prompt{
+    grid-area: text_prompt;
+    display :grid;
+    grid-template-columns: 85% 1fr;
+    margin: 25px 0px 25px 0px;
+}
+
+.text_list{
+    cursor: pointer;
+    grid-area: text_list;
+    border-radius: 5px;
+    background-color: var(--bgL1);
+    border-color: var(--bgL1);
+    transition: var(--motion);
+}
+
+.text_list:hover{
+    text-decoration: line-through;
+    text-decoration-color: red;
+    text-decoration-thickness: 4px;
+}
+
+
+.text_date{
+    grid-area: text_date;
+}
