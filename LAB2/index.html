@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" >
         <title>Laboratoria 2</title>
+        <meta charset="UTF-8" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
     </head>
@@ -19,11 +20,51 @@
                         <button id="submit_button" onclick="ToDo()" class="text_prompt_button">submit</button>
                 </section>
                 <section class="text_list">
-                    <section id="action_list" class="actions"> </section>
-                    <section id="data_list" class="text_date"> </section>
+                    <section id="remove_list">
+                        <ul id="removal_main">
+                        </ul>
+                    </section>
+                    <section id="action_list" class="actions"> 
+                        <ul id="main_list">
+                        </ul>
+                    </section>
+                    <section id="data_list" class="text_date">
+                        <ul id="main_dates">
+                        </ul>
+                    </section>
                 </section>
             </section>
         </div>
+        <!-- JQuery portion of the excercise-->
+        <script>
+            var text_removal = "<li class=x_button> ✖ </li>";
+
+            $("#submit_button").click(function()
+            {
+                $("#action_list").has("li").each(function(index)
+                {
+                    var temp = $(this);
+                    $("#removal_main").append(text_removal);
+                });
+            });
+
+            $(document).on("click",".x_button",function()
+            {
+                $(this).css("color"," red");
+                var index = $(this).index();
+                var list_act = $("li.bulletpoint").toArray();
+                var list_date = $("li.text_date").toArray();
+                list_act[index].remove();
+                list_date[index].remove();
+               // list[index].remove();
+                //var action = list.get(index);
+
+                //$(action).remove();
+                //$("#"+index).remove();
+                $(this).remove();
+            });
+
+        </script>
  
     </body>
 

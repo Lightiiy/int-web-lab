@@ -51,7 +51,6 @@ li{
 
 
 html, body{
-    max-width: 1075px;
     background-color: var(--bgMain);
 }
 
@@ -99,20 +98,12 @@ button:hover {
     grid-area: top_section;
     min-height: 215px;
     min-width: 1075px;
+    line-height: 215px;
     justify-content: center;
+    vertical-align: center;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-    ". header .";
     background: linear-gradient(var(--bgL1),var(--bgL1)), url(https://64.media.tumblr.com/13f4c5301de1a827ff623f0b4da43586/tumblr_pjokh9jKMI1y27xwio1_250.gifv);
     background-size:contain;
-}
-
-header{
-    grid-area: header;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .content_section{
@@ -132,15 +123,14 @@ header{
 }
 
 .text_list{
-    cursor: pointer;
     grid-area: text_list;
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 5% 1fr 40%;
     border-radius: 5px;
     background-color: var(--bgL1);
     border-color: var(--bgL1);
     grid-template-areas:
-    ". actions text_date ."
+    "x_button actions .text_date"
 }
 
 .bulletpoint{
@@ -160,4 +150,16 @@ header{
     grid-area: text_date;
     min-width: 100px;
     list-style-type: none;
+}
+
+.x_button{
+    grid-area : x_button;
+    cursor: pointer;
+    vertical-align:middle;
+    list-style-type: none;
+}
+
+.actions {
+    grid-area: actions;
+    cursor: pointer;
 }
