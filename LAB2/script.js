@@ -23,6 +23,7 @@ const ToDo = () =>{
         var yyyy = today.getFullYear();
         today = dd + '-' + mm + '-' + yyyy;
 
+
     const new_action = String(document.getElementById('new_action').value);
         if (new_action === '')
         {
@@ -38,36 +39,38 @@ const ToDo = () =>{
 
             date.setAttribute('class','text_date');
             date.setAttribute('id',iterator);
+            console.log(date.getAttribute('name'));
 
-            bulletpoint.setAttribute('id', iterator + '_to_be_done');
+            bulletpoint.setAttribute('name','to_be_done');
+            bulletpoint.setAttribute('id',iterator);
             bulletpoint.setAttribute('class','bulletpoint');
             date.innerHTML = '❕';
 
 
-            bulletpoint.addEventListener('click', event1 => {
-                if(bulletpoint.getAttribute('id').endsWith('to_be_done'))
-                {
-                    var list_poisition = bulletpoint.getAttribute('id').substring(0,1);  
 
+            bulletpoint.addEventListener('click', event1 => {               
+
+                if(bulletpoint.getAttribute('name').endsWith('to_be_done'))
+                {
+                    var list_poisition = bulletpoint.getAttribute('id');
+                    
                     bulletpoint.style.textDecoration = 'line-through';
                     bulletpoint.style.textDecorationColor = 'red';
                     bulletpoint.style.textDecorationThickness = '3px';
                     bulletpoint.style.color = 'var(--bgL2)';
-                    bulletpoint.setAttribute('id', list_poisition + '_done');
-                    console.log(bulletpoint.getAttribute('id'));
+                    bulletpoint.setAttribute('name','done');
 
-                    date = document.getElementById(list_poisition);
                     date.innerHTML = today;
-    
+
                 }
                 else{
-                    var list_poisition = bulletpoint.getAttribute('id').substring(0,1);  
+                    var list_poisition = bulletpoint.getAttribute('id');  
 
                     bulletpoint.style.textDecoration = null;
                     bulletpoint.style.textDecorationColor = null;
                     bulletpoint.style.textDecorationThickness = null;
                     bulletpoint.style.color = null;
-                    bulletpoint.setAttribute('id', list_poisition + '_to_be_done');
+                    bulletpoint.setAttribute('name', 'to_be_done');
 
                     date.innerHTML = '❕';
                 }
