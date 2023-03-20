@@ -26,7 +26,9 @@ body{
   padding: 1rem 100px;
   position: relative
 }
-
+/*#############################################*/
+/* NAVBAR  */
+/*#############################################*/
 nav{
   height: 100px;
   position: sticky;
@@ -61,4 +63,20 @@ nav{
 .nav-cta:hover, .nav-cta:active{
   background-color: var(--font-bold);
   color: white;
+}
+
+/*#############################################*/
+/* HERO */
+/*#############################################*/
+.her-wrapper{
+  display: grid;
+  grid-template-columns: 60% 40%;;
+}
+
+.hero-text{
+  grid-column: 0 /1;
+}
+
+.her-img{
+  grid-column: 1/-1;;
 }
