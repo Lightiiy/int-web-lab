@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+:root{
+  --font-bold:#6c4801;
+  --gray: #3b3b3b;
+  --accent-1: #A5b3ff;
+  --accent-1-tint:#e5eeff;
+  --accent-2: #FFC044;
+  --accent-2-tint: #fff8e4;
+  --border-radius: 4px;
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -13,16 +23,42 @@ html{
 }
 
 body{
-  margin: 1rem 100px;
+  padding: 1rem 100px;
+  position: relative
 }
 
-.navbar-wrapper{
+nav{
+  height: 100px;
+  position: sticky;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
 
 .navigation-menu{
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 3rem;
+}
+
+.nav-cta{
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--accent-2);
+}
+
+.nav-item:link,.nav-item:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item:hover, .nav-item:active{
+  color: var(--font-bold);
+}
+
+.nav-cta:hover, .nav-cta:active{
+  background-color: var(--font-bold);
+  color: white;
 }
