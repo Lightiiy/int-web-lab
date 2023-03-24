@@ -8,6 +8,7 @@
   --accent-2: #FFC044;
   --accent-2-tint: #fff8e4;
   --border-radius: 4px;
+  --products-main: #151E50
 }
 
 /*#############################################*/
@@ -16,6 +17,10 @@
 
 html{
     scroll-behavior: smooth;
+}
+
+img{
+  width: 10rem;
 }
 
 *{
@@ -27,24 +32,44 @@ html{
 }
 
 body{
-  padding: 1rem 100px;
+  padding: 1rem 0;
   position: relative
 }
 
 h1{
-  font-size: 2rem;
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 h2{
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 400;
   margin-bottom: 1rem;
 }
 
+h3{
+  font-weight: 400;
+  font-size: 18px;
+}
+
 .mb-2rem{
   margin-bottom: 2rem;
+}
+
+span{
+    color: var(--font-important);
+}
+
+.navbar{
+  padding: 0 2rem;
+}
+.section-hero, .section-marketing{
+  margin: 3rem;
+}
+
+.grid{
+  display: grid;
 }
 
 /*#############################################*/
@@ -85,6 +110,7 @@ nav{
   background-color: var(--font-important);
   color: white;
 }
+
 
 /*#############################################*/
 /* HERO */
@@ -145,9 +171,6 @@ nav{
   text-decoration: none;;
 }
 
-.form-config-acc span{
-  color: var(--font-important);
-}
 
 .form-config-acc a:link,.form-config-acc a:visited {
   color: inherit;
@@ -190,18 +213,135 @@ Za duzo czasu spedzilem na moim rozwiaznaiu, moze zmienie jak bede pamietal*/
 /*#############################################*/
 
 .section-marketing{
-  padding: 2rem 0;
+  padding: 4rem 0;
 }
 
 .marketing-title{
   text-align: center;
-  margin-bottom: 6.5rem;
+  margin-bottom: 4.5rem;
+  padding: 2rem 0;
+  background-image: url('./assets/assets/dots\ about\ section.svg');
+  background-repeat: no-repeat;
+  background-position: 70%;
 }
 
 .marketing-cards{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
+  row-gap: 1rem;
+  column-gap: 1rem;
   background-color: var(--accent-2-tint);
   padding: 4rem;
 }
+
+.card{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.card h3{
+  color: var(--font-important);
+  font-weight: 700;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.card p{
+  padding: 0 1rem 2rem;
+  text-align: center;
+}
+
+/*#############################################*/
+/* PRODUCTS  */
+/*#############################################*/
+.section-products{
+  background-color: var(--accent-1-tint);
+  padding: 3rem;
+}
+
+.products-title{
+  padding: 4rem;
+  text-align: center;
+}
+
+.products-examples{
+  color: var(--products-main);
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, min(20rem));
+  row-gap: 1rem;
+  column-gap: 1rem;
+}
+
+.card-large, .card-smol{
+display: grid;
+background-color: white;
+border-radius: var(--border-radius);
+}
+
+/* ***************************************************** */
+/* LARGE CARD */
+.card-large{
+  grid-row: span 2;
+  grid-column: span 1;
+  grid-template-rows: 60% 40%;
+}
+
+.card-large .card-img{
+  margin: 1rem;
+  border-radius: var(--border-radius);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 0%;
+  background-position-y:bottom;
+}
+
+
+/* ***************************************************** */
+/* SMALL CARD */
+
+.card-smol{
+  grid-row: span 1;
+  grid-column: span 1;
+  grid-template-columns: 40% 1fr;
+}
+
+.card-smol .card-img{
+  margin: 1rem;
+  border-radius: var(--border-radius);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y:bottom;
+}
+
+
+/* ***************************************************** */
+/* GENERAL FOR CARD*/
+
+.card-text{
+  padding: 2rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.card-cta{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-button{
+  padding: 1rem;
+  background-color: var(--accent-1);
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+.price{
+  font-weight: 700;
+} 
