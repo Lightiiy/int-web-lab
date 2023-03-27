@@ -8,7 +8,8 @@
   --accent-2: #FFC044;
   --accent-2-tint: #fff8e4;
   --border-radius: 4px;
-  --products-main: #151E50
+  --products-main: #151E50;
+  --box-shadow: 0px 4px 16px rgba(214, 214, 214, 0.25);
 }
 
 /*#############################################*/
@@ -17,18 +18,20 @@
 
 html{
     scroll-behavior: smooth;
+    color: var(--gray);
+
 }
 
-img{
+/* img{
   width: 10rem;
-}
+} */
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px
+    font-size: 16px;
 }
 
 body{
@@ -40,12 +43,15 @@ h1{
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: var(--gray);
 }
 
 h2{
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 1rem;
+  color: var(--gray);
+
 }
 
 h3{
@@ -70,6 +76,18 @@ span{
 
 .grid{
   display: grid;
+}
+
+.acc-2-button{
+  display: block;
+  background-color: var(--accent-2);
+  padding: 1rem;
+  border: none;
+  border-radius: var(--border-radius)
+}
+
+.➡️{
+  justify-self: end;
 }
 
 /*#############################################*/
@@ -180,13 +198,6 @@ nav{
   text-decoration: solid underline black 1px;
 }
 
-.log-in-button{
-  display: block;
-  background-color: var(--accent-2);
-  padding: 1rem;
-  border: none;
-  border-radius: var(--border-radius)
-}
 
 .hero-title{
   position: relative;
@@ -222,7 +233,7 @@ Za duzo czasu spedzilem na moim rozwiaznaiu, moze zmienie jak bede pamietal*/
   padding: 2rem 0;
   background-image: url('./assets/assets/dots\ about\ section.svg');
   background-repeat: no-repeat;
-  background-position: 70%;
+  background-position-x: 70%;
 }
 
 .marketing-cards{
@@ -299,10 +310,12 @@ border-radius: var(--border-radius);
   background-position-y:bottom;
 }
 
+.card-large .card-text{
+  padding: 2rem 1.5rem 1rem;
+}
 
 /* ***************************************************** */
 /* SMALL CARD */
-
 .card-smol{
   grid-row: span 1;
   grid-column: span 1;
@@ -317,10 +330,12 @@ border-radius: var(--border-radius);
   background-position-y:bottom;
 }
 
+.card-smol .card-text{
+  padding: 2rem 1rem 1rem;
+}
 
 /* ***************************************************** */
 /* GENERAL FOR CARD*/
-
 .card-text{
   padding: 2rem 1rem 1rem;
   display: flex;
@@ -345,3 +360,92 @@ border-radius: var(--border-radius);
 .price{
   font-weight: 700;
 } 
+
+.card-smol, .card-large{
+  box-shadow: var(--box-shadow);
+}
+
+/* ***************************************************** */
+/* FOOTER/CONTACT*/
+/* ***************************************************** */
+
+.section-contact{
+  margin: 3rem;
+}
+
+
+.section-contact p{
+  margin: 2rem 0;
+}
+
+.contact-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* ***************************************************** */
+/* IMAGE*/
+.footer-wrapper{
+  position: relative;
+  height: inherit;
+  width: 66%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr) 10%;
+  column-gap: 2rem;
+  grid-auto-flow: row;
+}
+
+.footer-image{
+  grid-row: span 3;
+}
+
+.footer-image a{
+  grid-row: 4 / -1;
+}
+
+.footer-wrapper::after{
+  content: ' ';
+  position: absolute;
+  z-index: -1;
+  background-color: var(--accent-2-tint);
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: 50%;
+  bottom: 0
+}
+
+/* i gave up */
+.🤡{
+  grid-column: span 1;
+  grid-row: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+}
+
+.footer-image{
+  width: 20vw;
+  height: 20vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: var(--border-radius);
+  box-shadow:  var(--box-shadow);
+}
+
+.🤡 a{
+  display: inline-block;
+  margin: 2rem 0;
+  text-decoration: none;
+}
+
+.🤡 a:active, .🤡 a:hover{
+  text-decoration: underline;
+
+}
+
+.🤡 a:link, .🤡 a:visited{
+color: var(--gray);
+}
