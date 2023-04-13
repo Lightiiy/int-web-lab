@@ -54,15 +54,16 @@ class ToDoList{
         action.appendChild(deleteButton);
         deleteButton.addEventListener('click', (event) => {
             const parent = event.target.parentElement;
-            const button = event.target;
-            document.removeChild(button);
-            console.log(event);
-            console.log(parent.textContent);
 
-            console.log(this.actionList.indexOf({
-                action: parent.value,
+            const removedItem = {
+                action: parent.textContent,
                 isDone: false
-            }))
+            }
+            console.log(removedItem);
+            // const removedItem = this.actionList.find( element => element.action === parent.textContent);
+            parent.removeChild(event.target);
+            
+            // this.actionList.splice(this.actionList.indexOf(removedItem, 1));
 
         })
     }
