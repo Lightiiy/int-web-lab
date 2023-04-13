@@ -1,0 +1,8 @@
+{
+    "include":[
+        "./script.ts"
+    ],
+    "exclude":[
+        "./script.js"
+    ]
+}
