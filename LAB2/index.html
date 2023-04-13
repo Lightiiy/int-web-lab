@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Laboratoria 2</title>
-        <meta charset="UTF-8" >
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body> 
-        <!--header-->
-        <header></header>
-        <!--Add actions to the to do list-->
-        <section class="section-form">
-            <form class="form-action">
+  <head>
+    <title>Laboratoria 2</title>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--header-->
+    <header>
+      <h1>Interactive To Do List</h1>
+    </header>
+    <!--Add actions to the to do list-->
+    <section class="section-form">
+      <div class="form-wrapper">
+        <form class="form-action">
+          <input
+            name="action_input"
+            type="text"
+            onkeydown="overrideEnter(event)"
+            placeholder="Add your Do's to the To list 🐸"
+          />
+          <button
+            type="button"
+            onclick="formActionAddToList(mainList, document.querySelector('input[name=action_input]').value)"
+          >
+            Add action
+          </button>
+        </form>
+      </div>
+    </section>
 
-            </form>
-        </section>
-        <main>
-            <!-- List -->
-            <section class="section-main">
-                <div id="list-wrapper"> 
-                    <ul class="to-do-list">
-
-                    </ul>
-                </div>
-            </section>
-            <!--WIP choose a list-->
-            <aside>
-                <div class="side-form">
-                    <form class="form-list">
-
-                    </form>
-                </div>
-            </aside>
-        </main>
-    </body>
-    <script src="script.js"></script>
-
+    <main>
+      <!-- List -->
+      <section class="section-main">
+        <div id="list-wrapper"></div>
+      </section>
+      <!--WIP choose a list-->
+      <aside class="side-form">
+        <div class="aside-wrapper">
+          <form class="form-list"></form>
+        </div>
+      </aside>
+    </main>
+  </body>
+  <script src="script.js"></script>
 </html>

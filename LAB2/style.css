@@ -1,28 +1,183 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-:root{
-    --text-header: rgb(173, 216, 230);
-    --text: rgb(231, 231, 201);
-    --textL1: rgb(231, 231, 221);
-    --bakcground-main: rgb(25,25,25);
-    --bakcground-80opacity: rgba(50,50,50,0.8);
-    --background-50opacity: rgba(75,75,75,0.5);
-    --button-main: rgb(255,180,180);
-    --button-hover: rgb(173, 122, 122);
-    --motion: all 0.3s ease 0s;
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+:root {
+  --text-header: rgb(173, 216, 230);
+  --text: rgb(231, 231, 201);
+  --textL1: rgb(231, 231, 221);
+  --bakcground-main: rgb(25, 25, 25);
+  --bakcground-80opacity: rgba(50, 50, 50, 0.8);
+  --background-50opacity: rgba(75, 75, 75, 0.5);
+  --button-main: rgb(255, 180, 180);
+  --button-hover: rgb(173, 122, 122);
+  --accent-shadow2: #3c214f;
+  --accent-shadow1: #623682;
+  --accent-main: #75409b;
+  --accent-tin1: #9c55cf;
+  --accent-tint2: #c069ff;
+  --motion: all 0.3s ease 0s;
 }
 
+@keyframes make-visible {
+  from {
+    visibility: hidden;
+  }
 
-*{
-    box-sizing: border-box;
-    font-family: 'Varela Round', sans-serif;
-    padding: 0;
-    margin: 0;
+  to {
+    visibility: visible;
+  }
 }
 
-html{
-    background-color: var(--bgL1);
+/* ************************************************** */
+/* GENERAL */
+/* ************************************************** */
+
+* {
+  box-sizing: border-box;
+  font-family: "Varela Round", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-.to-do-list{
-    background-color: red;
+button,
+input {
+  display: block;
+  border-radius: 8px;
+  border: none;
+}
+
+.delete-button {
+  background-color: transparent;
+}
+
+input {
+  background-color: var(--accent-shadow1);
+  color: var(--text);
+  padding: 0 1rem;
+}
+
+input:focus {
+  background-color: var(--accent-shadow2);
+  outline: none;
+}
+
+button {
+  position: relative;
+  z-index: 2;
+  background-color: var(--button-main);
+  color: var(--bakcground-main);
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+ul {
+  list-style: none;
+}
+
+/* ************************************************** */
+/* HEADER */
+/* ************************************************** */
+
+body {
+  background-color: var(--bakcground-main);
+}
+
+main {
+  display: grid;
+  justify-content: stretch;
+  padding: 0 2rem;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  padding: 4rem 0;
+  color: var(--text-header);
+  font-weight: bold;
+  text-align: center;
+  background-image: linear-gradient(
+      180deg,
+      var(--bakcground-80opacity) 40%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url("https://64.media.tumblr.com/13f4c5301de1a827ff623f0b4da43586/tumblr_pjokh9jKMI1y27xwio1_250.gifv");
+  background-size: contain;
+}
+
+/* ************************************************** */
+/* ACTION - FORM */
+/* ************************************************** */
+
+.form-wrapper {
+  padding: 2rem 0 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0 0 8px 8px;
+  background-color: var(--accent-main);
+}
+
+.form-action {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  height: 2rem;
+}
+
+.form-action input {
+  width: 70vw;
+}
+
+.form-action button {
+  width: 20vw;
+}
+
+/* ************************************************** */
+/* MAIN */
+/* ************************************************** */
+
+/* ************************************************** */
+/* LIST  */
+
+.section-main {
+  grid-row: span 2;
+  background-color: var(--background-50opacity);
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.to-do-list li {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+  padding: 1rem;
+  color: var(--text);
+  border-bottom: 2px solid var(--background-50opacity);
+  transition: background-color ease-in 0.3s;
+}
+
+.to-do-list li:hover {
+  background-color: var(--background-50opacity);
+}
+
+.to-do-list li:hover {
+  background-color: var(--background-50opacity);
+}
+
+.to-do-list li:last-child {
+  border: none;
+}
+
+/* ************************************************** */
+/* ASIDE */
+
+.side-form {
+  display: flex;
+  background-color: var(--background-50opacity);
+  border-radius: 8px;
+  min-height: 475px;
 }
