@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 :root {
   --text-header: rgb(173, 216, 230);
   --text: rgb(231, 231, 201);
@@ -32,7 +32,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Varela Round", sans-serif;
+  font-family: 'Varela Round', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -103,7 +103,7 @@ header {
       var(--bakcground-80opacity) 40%,
       rgba(0, 0, 0, 0) 100%
     ),
-    url("https://64.media.tumblr.com/13f4c5301de1a827ff623f0b4da43586/tumblr_pjokh9jKMI1y27xwio1_250.gifv");
+    url('https://64.media.tumblr.com/13f4c5301de1a827ff623f0b4da43586/tumblr_pjokh9jKMI1y27xwio1_250.gifv');
   background-size: contain;
 }
 
@@ -157,7 +157,11 @@ header {
   padding: 1rem;
   color: var(--text);
   border-bottom: 2px solid var(--background-50opacity);
-  transition: background-color ease-in 0.3s;
+  transition: background-color ease-in 0.3s, text-decoration ease-in 0.3s;
+}
+
+.isDone {
+  text-decoration: line-through var(--accent-main) 3px;
 }
 
 .to-do-list li:hover {

@@ -9,12 +9,21 @@ class ToDoList {
                 return;
             }
             this.actionList.push({ action: action, isDone: false });
-            this.appendtoRenderedList(action);
+            this.createDeleteButton(this.appendtoRenderedList(action));
         };
         this.appendtoRenderedList = (action) => {
             const newLI = document.createElement('li');
             newLI.appendChild(document.createTextNode(action));
             this.listRender.appendChild(newLI);
+            newLI.addEventListener('click', (event) => {
+                const element = event.target;
+                const index = [...this.listRender.children].indexOf(element);
+                if (index !== -1) {
+                    console.log(this.actionList);
+                    element.classList.toggle("isDone");
+                    this.actionList[index].isDone = !this.actionList[index].isDone;
+                }
+            });
             return newLI;
         };
         this.createDeleteButton = (action) => {
@@ -24,21 +33,22 @@ class ToDoList {
             action.appendChild(deleteButton);
             deleteButton.addEventListener('click', (event) => {
                 const parent = event.target.parentElement;
-                const removedItem = {
-                    action: parent.textContent,
-                    isDone: false
-                };
-                console.log(removedItem);
-                // const removedItem = this.actionList.find( element => element.action === parent.textContent);
-                parent.removeChild(event.target);
-                // this.actionList.splice(this.actionList.indexOf(removedItem, 1));
+                const removedItem = this.actionList.find(element => element.action === parent.textContent.slice(0, -1));
+                if (removedItem === undefined) {
+                    console.error("tried removing something that doesnt exist");
+                }
+                else {
+                    this.listRender.removeChild(parent);
+                    const index = [...this.listRender.children].indexOf(parent);
+                    this.actionList.splice(index, 1);
+                }
             });
         };
         this.title = title;
         this.actionList = [{ action: 'test', isDone: false },
             { action: 'test15', isDone: false },
-            { action: 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum', isDone: true }];
-        this.listRender = document.createElement('ul');
+            { action: 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum', isDone: false }];
+        this.listRender = document.createElement('ol');
         this.listRender.classList.add('to-do-list');
         this.listRender.id = (this.title);
         document.querySelector('#list-wrapper')?.appendChild(this.listRender);
@@ -60,5 +70,4 @@ const overrideEnter = (event) => {
         event?.preventDefault();
         formActionAddToList(mainList, event.target.value);
     }
-    console.log(mainList);
 };
