@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 :root {
-  --text-header: rgb(173, 216, 230);
+  --border-radius: 8px;
+  --text-header: #9c55cf;
   --text: rgb(231, 231, 201);
+  --text-shadow1: #bebe9d;
   --text-tint1: rgb(231, 231, 221);
   --bakcground-main: rgb(25, 25, 25);
   --bakcground-80opacity: rgba(50, 50, 50, 0.8);
   --background-50opacity: rgba(75, 75, 75, 0.5);
-  --button-main: rgb(255, 180, 180);
-  --button-hover: rgb(173, 122, 122);
+  --background-90opacity: rgba(25, 25, 25, 0.9);
+  --button-main: #623682;
+  --button-hover: #3c214f;
   --accent-shadow2: #3c214f;
   --accent-shadow1: #623682;
   --accent-main: #75409b;
-  --accent-tin1: #9c55cf;
+  --accent-tint1: #9c55cf;
   --accent-tint2: #c069ff;
   --motion: all 0.3s ease 0s;
 }
@@ -40,7 +43,7 @@
 button,
 input {
   display: block;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   border: none;
 }
 
@@ -62,7 +65,12 @@ input {
   padding: 0 1rem;
 }
 
-input:focus {
+input::placeholder {
+  color: var(--text-shadow1);
+}
+
+input:focus,
+input:hover {
   background-color: var(--accent-shadow2);
   outline: none;
 }
@@ -71,15 +79,53 @@ button {
   position: relative;
   z-index: 2;
   background-color: var(--button-main);
-  color: var(--bakcground-main);
 }
 
 button:hover {
   background-color: var(--button-hover);
 }
 
-ul {
+ul,
+ol {
   list-style: none;
+}
+
+li {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+  padding: 1rem;
+  color: var(--text);
+  border-bottom: 2px solid var(--background-50opacity);
+  transition: color ease-in 0.3s, text-decoration ease-in 0.3s;
+}
+
+li:hover {
+  background-color: var(--background-50opacity);
+}
+
+li:last-child {
+  border: none;
+}
+
+h1 {
+  color: var(--text-header);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+p {
+  color: var(--text);
+}
+
+.hidden {
+  visibility: hidden !important;
+}
+
+.active {
+  background-color: var(--background-50opacity);
 }
 
 /* ************************************************** */
@@ -87,6 +133,7 @@ ul {
 /* ************************************************** */
 
 body {
+  position: relative;
   background-color: var(--bakcground-main);
 }
 
@@ -97,6 +144,7 @@ main {
   grid-template-columns: 2fr 1fr;
   grid-template-rows: repeat(2, 1fr);
   column-gap: 2rem;
+  row-gap: 1rem;
   height: 100%;
   width: 100%;
 }
@@ -121,16 +169,23 @@ header {
 
 .form-wrapper {
   padding: 2rem 0 2rem;
-  margin-bottom: 2rem;
-  border-radius: 0 0 8px 8px;
+  margin-bottom: 4rem;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   background-color: var(--accent-main);
+}
+
+div.form-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .form-action {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2rem;
   height: 2rem;
+  padding: 0 2rem;
 }
 
 .form-action input {
@@ -151,21 +206,8 @@ header {
 .section-main {
   grid-row: span 2;
   background-color: var(--background-50opacity);
-  overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   margin-bottom: 2rem;
-}
-
-.to-do-list li {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: start;
-  gap: 1rem;
-  padding: 1rem;
-  color: var(--text);
-  border-bottom: 2px solid var(--background-50opacity);
-  transition: color ease-in 0.3s, text-decoration ease-in 0.3s;
 }
 
 .isDone {
@@ -178,9 +220,21 @@ header {
   visibility: hidden;
 }
 
+.to-do-list {
+  position: relative;
+}
+
+.to-do-list::before {
+  content: attr(id);
+  position: absolute;
+  transform: translateY(-100%);
+  color: var(--text-header);
+  padding: 1rem 1rem 0.5rem;
+  font-size: 2rem;
+}
+
 .isDone::after {
   content: attr(date);
-
   position: absolute;
   top: 50%;
   left: 50%;
@@ -191,24 +245,86 @@ header {
   animation: make-visible ease-in-out 0.3s;
 }
 
-.to-do-list li:hover {
-  background-color: var(--background-50opacity);
-}
-
-.to-do-list li:hover {
-  background-color: var(--background-50opacity);
-}
-
-.to-do-list li:last-child {
-  border: none;
-}
-
 /* ************************************************** */
-/* ASIDE */
+/* ASIDE - FORM */
+
+.list-of-lists {
+  padding: 0 1rem;
+}
 
 .side-form {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--background-50opacity);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   min-height: 475px;
+}
+
+.form-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+  height: 15%;
+  min-height: 4rem;
+}
+
+.form-list input {
+  height: 3rem;
+  width: 100%;
+}
+
+.form-list button {
+  width: 50%;
+  padding: 0.5rem 1rem;
+}
+
+.form-list input:focus,
+.form-list input:hover,
+.form-list button:hover {
+  background-color: var(--accent-tint1);
+}
+
+/* ************************************************** */
+/* ASIDE - GRAVEYARD */
+
+.side-graveyard {
+  align-self: flex-start;
+  background-color: var(--background-50opacity);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+#graveyard-wrapper .grave {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+  padding: 1rem 1rem 0;
+  margin-bottom: 1rem;
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+}
+
+#graveyard-wrapper .grave:hover {
+  color: var(--accent-tint1);
+}
+
+/* ************************************************** */
+/* MODAL */
+/* ************************************************** */
+
+.modal {
+  display: flex;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: var(--background-90opacity);
+  top: 0;
+  width: 100vw;
+  height: 100vh;
 }

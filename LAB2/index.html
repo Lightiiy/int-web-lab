@@ -22,7 +22,7 @@
             placeholder="Add your Do's to the To list 🐸" />
           <button
             type="button"
-            onclick="formActionAddToList(mainList, document.querySelector('input[name=action_input]').value)">
+            onclick="formActionAddToList(currList, document.querySelector('input[name=action_input]').value)">
             Add action
           </button>
         </form>
@@ -36,11 +36,34 @@
       </section>
       <!--WIP choose a list-->
       <aside class="side-form">
-        <div class="aside-wrapper">
-          <form class="form-list"></form>
+        <div class="lists-wrapper">
+          <h1>LIST OF LISTS</h1>
+        </div>
+        <form class="form-list">
+          <input type="text" name="list_input" />
+          <button
+            onclick="formListAddToLists(document.querySelector('input[name=list_input]').value)"
+            type="button">
+            Add New List
+          </button>
+        </form>
+      </aside>
+      <aside class="side-graveyard">
+        <div id="graveyard-wrapper">
+          <h1 class="graveyard-header">Graveyard</h1>
         </div>
       </aside>
     </main>
+    <div id="modal" class="modal hidden">
+      <div id="#delete" class="delete-warning">
+        <h1>Permanently deleting an action</h1>
+        <p>Are you sure?</p>
+        <div class="button-wrapper">
+          <button id="delete-yes" type="button">YES</button>
+          <button id="delete-no" type="button">NO</button>
+        </div>
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="script.js"></script>
 </html>
