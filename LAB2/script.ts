@@ -9,7 +9,7 @@ interface Action{
 class ToDoList{
 
     public title: string;
-    const actionList: Action[];
+    actionList: Action[];
     private listRender: Element;
 
     constructor(title: string){
@@ -37,7 +37,7 @@ class ToDoList{
             return;
         }
         this.actionList.push({action: action, isDone: false});
-        this.createDeleteButton(this.appendtoRenderedList(action);
+        this.createDeleteButton(this.appendtoRenderedList(action));
     }
 
     appendtoRenderedList = (action: string): Element => {
@@ -49,29 +49,26 @@ class ToDoList{
             const index = [...this.listRender.children].indexOf(element);
             if( index !== -1) {
                 this.actionList[index].isDone = !this.actionList[index].isDone;
-                element.classList.toggle( "isDone");
+                element.classList.toggle("isDone");
             }
         })
         return newLI;
     }
 
+    removeFromBothLists = (index: number) => {
+        const removable = [...this.listRender.children][index];
+        console.log(removable);
+        this.listRender.removeChild(removable);
+        console.log(this.actionList);
+        this.actionList.splice(index, 1);
+        console.log(this.actionList);
+    }
+    
     createDeleteButton = (action: Element) => {
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('delete-button');
         deleteButton.textContent = '❌';
         action.appendChild(deleteButton);
-        deleteButton.addEventListener('click', (event) => {
-            const parent = event.target.parentElement;
-            const removedItem = this.actionList.find( element => element.action === parent.textContent.slice(0, -1))
-            if( removedItem === undefined)
-            {
-                console.error("tried removing something that doesnt exist");
-            }else{
-                this.listRender.removeChild(parent);
-                const index = [...this.listRender.children].indexOf(parent);
-                this.actionList.splice(index, 1);
-            }
-        })
     }
 
 }
@@ -80,6 +77,7 @@ class ToDoList{
 
 //MAIN
 const mainList = new ToDoList('mainList');
+const currList = mainList;
 
 
 const formActionAddToList = (list: ToDoList, action: string) => 
@@ -91,7 +89,16 @@ const overrideEnter = (event: Event) => {
     var inputEl = document.querySelector('input[name=action_input]');
     if (event.key === 'Enter'){
         event?.preventDefault();
-        formActionAddToList(mainList, event.target.value);
+        formActionAddToList(currList, event.target.value);
     }
     
 }
+
+//ZAD Jquery.1 -> usuwanie wybranego elementu z listy
+$(function(){
+        $(document).on("click",'.delete-button', function () {
+            const index = $(this).parent().index();
+            console.log(index);
+            currList.removeFromBothLists(index);
+    })
+})

@@ -1,2 +1,5 @@
+/node_modules
 
-LAB2/LAB2.rar
+package-lock.json
+package.json
+/LAB2/script.ts

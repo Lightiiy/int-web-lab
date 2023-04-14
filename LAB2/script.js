@@ -19,30 +19,25 @@ class ToDoList {
                 const element = event.target;
                 const index = [...this.listRender.children].indexOf(element);
                 if (index !== -1) {
-                    console.log(this.actionList);
-                    element.classList.toggle("isDone");
                     this.actionList[index].isDone = !this.actionList[index].isDone;
+                    element.classList.toggle("isDone");
                 }
             });
             return newLI;
+        };
+        this.removeFromBothLists = (index) => {
+            const removable = [...this.listRender.children][index];
+            console.log(removable);
+            this.listRender.removeChild(removable);
+            console.log(this.actionList);
+            this.actionList.splice(index, 1);
+            console.log(this.actionList);
         };
         this.createDeleteButton = (action) => {
             const deleteButton = document.createElement('button');
             deleteButton.classList.add('delete-button');
             deleteButton.textContent = '❌';
             action.appendChild(deleteButton);
-            deleteButton.addEventListener('click', (event) => {
-                const parent = event.target.parentElement;
-                const removedItem = this.actionList.find(element => element.action === parent.textContent.slice(0, -1));
-                if (removedItem === undefined) {
-                    console.error("tried removing something that doesnt exist");
-                }
-                else {
-                    this.listRender.removeChild(parent);
-                    const index = [...this.listRender.children].indexOf(parent);
-                    this.actionList.splice(index, 1);
-                }
-            });
         };
         this.title = title;
         this.actionList = [{ action: 'test', isDone: false },
@@ -61,6 +56,7 @@ class ToDoList {
 }
 //MAIN
 const mainList = new ToDoList('mainList');
+const currList = mainList;
 const formActionAddToList = (list, action) => {
     list.addActionToList(action);
 };
@@ -68,6 +64,13 @@ const overrideEnter = (event) => {
     var inputEl = document.querySelector('input[name=action_input]');
     if (event.key === 'Enter') {
         event?.preventDefault();
-        formActionAddToList(mainList, event.target.value);
+        formActionAddToList(currList, event.target.value);
     }
 };
+$(function () {
+    $(document).on("click", '.delete-button', function () {
+        const index = $(this).parent().index();
+        console.log(index);
+        currList.removeFromBothLists(index);
+    });
+});
