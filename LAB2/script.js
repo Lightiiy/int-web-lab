@@ -13,6 +13,7 @@ class ToDoList {
         };
         this.appendtoRenderedList = (action) => {
             const newLI = document.createElement('li');
+            newLI.setAttribute('date', this.date);
             newLI.appendChild(document.createTextNode(action));
             this.listRender.appendChild(newLI);
             newLI.addEventListener('click', (event) => {
@@ -47,11 +48,19 @@ class ToDoList {
         this.listRender.classList.add('to-do-list');
         this.listRender.id = (this.title);
         document.querySelector('#list-wrapper')?.appendChild(this.listRender);
+        this.date = this.getFormatedDate();
+        document.documentElement.style.setProperty('--date', this.date);
+        console.log(getComputedStyle(document.documentElement).getPropertyValue('--date'));
         if (this.actionList.length !== 0) {
             this.actionList.forEach(element => {
                 this.createDeleteButton(this.appendtoRenderedList(element.action));
             });
         }
+    }
+    getFormatedDate() {
+        const date = new Date();
+        const today = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+        return today;
     }
 }
 //MAIN
@@ -67,6 +76,7 @@ const overrideEnter = (event) => {
         formActionAddToList(currList, event.target.value);
     }
 };
+//ZAD Jquery.1 -> usuwanie wybranego elementu z listy
 $(function () {
     $(document).on("click", '.delete-button', function () {
         const index = $(this).parent().index();

@@ -11,6 +11,7 @@ class ToDoList{
     public title: string;
     actionList: Action[];
     private listRender: Element;
+    private date: string;
 
     constructor(title: string){
         this.title = title;
@@ -21,7 +22,7 @@ class ToDoList{
         this.listRender.classList.add('to-do-list');
         this.listRender.id = (this.title);
         document.querySelector('#list-wrapper')?.appendChild(this.listRender);
-
+        this.date = this.getFormatedDate();
         if(this.actionList.length !== 0)
         {
             this.actionList.forEach(element => {
@@ -42,6 +43,7 @@ class ToDoList{
 
     appendtoRenderedList = (action: string): Element => {
         const newLI = document.createElement('li')
+        newLI.setAttribute('date', this.date);
         newLI.appendChild(document.createTextNode(action));
         this.listRender.appendChild(newLI);
         newLI.addEventListener( 'click', (event) => {
@@ -57,11 +59,8 @@ class ToDoList{
 
     removeFromBothLists = (index: number) => {
         const removable = [...this.listRender.children][index];
-        console.log(removable);
         this.listRender.removeChild(removable);
-        console.log(this.actionList);
         this.actionList.splice(index, 1);
-        console.log(this.actionList);
     }
     
     createDeleteButton = (action: Element) => {
@@ -71,6 +70,12 @@ class ToDoList{
         action.appendChild(deleteButton);
     }
 
+    getFormatedDate(): string{
+        const date = new Date();
+        const today = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+        return today;
+    }
+
 }
 
 
@@ -78,6 +83,7 @@ class ToDoList{
 //MAIN
 const mainList = new ToDoList('mainList');
 const currList = mainList;
+
 
 
 const formActionAddToList = (list: ToDoList, action: string) => 
@@ -94,11 +100,12 @@ const overrideEnter = (event: Event) => {
     
 }
 
+
+
 //ZAD Jquery.1 -> usuwanie wybranego elementu z listy
 $(function(){
         $(document).on("click",'.delete-button', function () {
             const index = $(this).parent().index();
-            console.log(index);
             currList.removeFromBothLists(index);
     })
 })

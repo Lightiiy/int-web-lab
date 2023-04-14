@@ -2,7 +2,7 @@
 :root {
   --text-header: rgb(173, 216, 230);
   --text: rgb(231, 231, 201);
-  --textL1: rgb(231, 231, 221);
+  --text-tint1: rgb(231, 231, 221);
   --bakcground-main: rgb(25, 25, 25);
   --bakcground-80opacity: rgba(50, 50, 50, 0.8);
   --background-50opacity: rgba(75, 75, 75, 0.5);
@@ -18,11 +18,11 @@
 
 @keyframes make-visible {
   from {
-    visibility: hidden;
+    color: transparent;
   }
 
   to {
-    visibility: visible;
+    color: var(--text-tint1);
   }
 }
 
@@ -45,6 +45,14 @@ input {
 }
 
 .delete-button {
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: transparent;
+  transition: transform 1s;
+}
+
+.delete-button:hover {
+  transform: rotate(720deg);
   background-color: transparent;
 }
 
@@ -157,11 +165,30 @@ header {
   padding: 1rem;
   color: var(--text);
   border-bottom: 2px solid var(--background-50opacity);
-  transition: background-color ease-in 0.3s, text-decoration ease-in 0.3s;
+  transition: color ease-in 0.3s, text-decoration ease-in 0.3s;
 }
 
 .isDone {
-  text-decoration: line-through var(--accent-main) 3px;
+  position: relative;
+  text-decoration: line-through var(--background-50opacity) 3px;
+  color: var(--bakcground-80opacity) !important;
+}
+
+.isDone .delete-button {
+  visibility: hidden;
+}
+
+.isDone::after {
+  content: attr(date);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: var(--text-tint1);
+  animation: make-visible ease-in-out 0.3s;
 }
 
 .to-do-list li:hover {
