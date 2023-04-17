@@ -146,7 +146,6 @@ const overrideEnter = (event) => {
     const inputEl = event.target;
     const input_name = inputEl.getAttribute('name');
     if (event.key === 'Enter') {
-        console.log(input_name);
         switch (input_name) {
             case 'action_input':
                 if (inputEl !== null) {
@@ -216,7 +215,6 @@ const search = (searched, caseSensitive) => {
     });
 };
 const searchButton = (searched, caseSensitive) => {
-    console.log(caseSensitive);
     if (searched.replace(/\s/g, '') === '') {
         {
             document.querySelector('.search-wrapper')?.classList.toggle('hidden');
@@ -236,26 +234,8 @@ const clearSearch = () => {
     }
 };
 $(function () {
-    //  function toggleModal(variant: string, index: number = 0){
-    //     console.log(variant);
-    //         switch (variant)
-    //         {
-    //             case 'delete':
-    //                 $('#modal').toggleClass('hidden');
-    //                 $('#delete').toggleClass('hidden');
-    //                 $('#delete-yes').on("click", function(){
-    //                     console.log(index);
-    //                     // currList.removeFromBothLists(index);
-    //                     $('#modal').toggleClass('hidden');
-    //                     $('#delete').toggleClass('hidden');
-    //                 })
-    //                 break;
-    //             default:
-    //                 console.error('wrong variant of modal');
-    //         }
-    // }
     //ZAD Jquery.1 -> usuwanie wybranego elementu z listy
-    //ZAD Jquery.3 -> modal przy usuwaniu elementu z listy
+    //ZAD WIP Jquery.3 -> modal przy usuwaniu elementu z listy
     $(document).on("click", '.delete-button', function () {
         // toggleModal('delete', $(this).parent().index());
         const index = $(this).parent().index();
@@ -272,7 +252,4 @@ $(function () {
             $('.grave').remove();
         }
     });
-    if ($("input[name=action_input]").is(':focus')) {
-        console.log('focused');
-    }
 });
