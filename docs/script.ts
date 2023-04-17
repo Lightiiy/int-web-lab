@@ -298,46 +298,11 @@ const clearSearch = () => {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(function(){
-
-    //  function toggleModal(variant: string, index: number = 0){
-    //     console.log(variant);
-    //         switch (variant)
-    //         {
-    //             case 'delete':
-    //                 $('#modal').toggleClass('hidden');
-    //                 $('#delete').toggleClass('hidden');
-    //                 $('#delete-yes').on("click", function(){
-    //                     console.log(index);
-    //                     // currList.removeFromBothLists(index);
-    //                     $('#modal').toggleClass('hidden');
-    //                     $('#delete').toggleClass('hidden');
-    //                 })
-    //                 break;
-    //             default:
-    //                 console.error('wrong variant of modal');
-
-    //         }
-    // }
 
 
 //ZAD Jquery.1 -> usuwanie wybranego elementu z listy
-//ZAD Jquery.3 -> modal przy usuwaniu elementu z listy
+//ZAD WIP Jquery.3 -> modal przy usuwaniu elementu z listy
     $(document).on("click",'.delete-button', function () {
         // toggleModal('delete', $(this).parent().index());
         const index = $(this).parent().index();
@@ -363,3 +328,23 @@ $(function(){
 
 })
 
+
+    //  function toggleModal(variant: string, index: number = 0){
+    //     console.log(variant);
+    //         switch (variant)
+    //         {
+    //             case 'delete':
+    //                 $('#modal').toggleClass('hidden');
+    //                 $('#delete').toggleClass('hidden');
+    //                 $('#delete-yes').on("click", function(){
+    //                     console.log(index);
+    //                     // currList.removeFromBothLists(index);
+    //                     $('#modal').toggleClass('hidden');
+    //                     $('#delete').toggleClass('hidden');
+    //                 })
+    //                 break;
+    //             default:
+    //                 console.error('wrong variant of modal');
+
+    //         }
+    // }
