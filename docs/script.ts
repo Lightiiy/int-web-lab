@@ -51,10 +51,14 @@ class ToDoList{
         this.listRender.appendChild(newLI);
         newLI.addEventListener( 'click', (event) => {
             const element = event.target;
+            if(element !== null){
             const index = [...this.listRender.children].indexOf(element);
             if( index !== -1) {
                 this.actionList[index].isDone = !this.actionList[index].isDone;
-                element.classList.toggle("isDone");
+                
+                    element.classList.toggle("isDone");
+                }
+                
             }
         })
         return newLI;
