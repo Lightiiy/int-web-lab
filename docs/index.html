@@ -40,7 +40,10 @@
           <h1>LIST OF LISTS</h1>
         </div>
         <form class="form-list">
-          <input type="text" name="list_input" />
+          <input
+            type="text"
+            name="list_input"
+            onkeydown="overrideEnter(event)" />
           <button
             onclick="formListAddToLists(document.querySelector('input[name=list_input]').value)"
             type="button">
@@ -55,22 +58,31 @@
       </aside>
 
       <section class="section-search">
-        <div class="search-wrapper">
+        <div class="search-wrapper hidden">
           <form class="search-form">
             <div class="input-with-checkbox">
-              <input type="text" placeholder="Search through all lists 🕵️" />
+              <input
+                type="text"
+                name="search_input"
+                placeholder="Search through all lists 🕵️"
+                onkeydown="overrideEnter(event)"
+                onkeyup="search(document.querySelector('input[name=search_input]').value,document.querySelector('input[name=case_sensetive]').checked)" />
               <label>Aa</label>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                class="nested-checkbox"
+                name="case_sensetive"
+                value="true" />
             </div>
             <button
               type="button"
               class="search-button"
               style="visibility: visible !important"
-              onclick="searchFunction('test',false)">
+              onclick="searchButton(document.querySelector('input[name=search_input]').value,document.querySelector('input[name=case_sensetive]').checked)">
               🔎
             </button>
           </form>
-          <div class="search-results">
+          <div class="search-results custom-scrollbar">
             <div class="results-wrapper"></div>
           </div>
         </div>

@@ -120,19 +120,20 @@ const mainList = new ToDoList('Main List');
 const altList = new ToDoList('Additional List');
 const listOfLists = [mainList, altList];
 const listOfListsRender: Element = document.createElement('ol');
-const resultRender: Element = document.createElement('ol');
+const resultRender: Element = document.createElement('div');
 var currList = mainList;
 
-mainList.addActionToList('test');
+mainList.addActionToList('tEst');
 mainList.addActionToList('test2');
-mainList.addActionToList('test3');
+mainList.addActionToList('teST3');
 mainList.addActionToList('test4');
 
+altList.addActionToList('testinga');
+altList.addActionToList('testing0a');
+altList.addActionToList('teSTing1a');
+altList.addActionToList('testing2a');
+altList.addActionToList('tEstin3');
 
-altList.addActionToList('testing');
-altList.addActionToList('testing2');
-altList.addActionToList('testing3a');
-altList.addActionToList('testing4a');
 
 listOfListsRender.classList.add('list-of-lists');
 document.querySelector('.lists-wrapper')?.appendChild(listOfListsRender);
@@ -191,21 +192,42 @@ const formListAddToLists = (title: string) => {
 
 
 const overrideEnter = (event: Event) => {
-    const inputEl = document.querySelector('input[name=action_input]');
-    if (inputEl !== null) {
-        if (event.key === 'Enter'){
-            event?.preventDefault();
-            formActionAddToList(currList, event.target.value);
-            inputEl.value = '';
+    const inputEl = event.target;
+    const input_name = inputEl.getAttribute('name');
+    if (event.key === 'Enter'){
+        console.log(input_name);
+        switch (input_name)
+        {
+            case 'action_input':
+                if (inputEl !== null) { 
+                        event?.preventDefault();
+                        formActionAddToList(currList, inputEl.value);
+                        inputEl.value = '';
+                    }
+                break;
+            case 'list_input':
+                if (inputEl !== null){
+                    event?.preventDefault();
+                    formListAddToLists(inputEl.value);
+                    inputEl.value = '';
+                }
+                break;
+            case 'search_input':
+                if (inputEl !== null){
+                    event?.preventDefault();
+                    searchButton(document.querySelector('input[name=search_input]').value,document.querySelector('input[name=case_sensetive]').checked);
+                }
+                break;
+            default: 
+                alert('Where did you even press that');
+                break
         }
     }
+    
 }
 
 
-
-
-
-const searchFunction = (searched: string, caseSensitive:boolean) => {
+const searchFunction = (searched: string, caseSensitive:boolean): Array<['string','string']> => {
     var allActions = new Array;
     listOfLists.forEach(
         list => {
@@ -214,19 +236,66 @@ const searchFunction = (searched: string, caseSensitive:boolean) => {
             }))
         }
     )
+
     const result = allActions.filter(searchedAction =>{
-        if(searchedAction[1].action.includes(searched)){
-            return searchedAction;
-        }
-    })
+        if(caseSensitive){
+            if(searchedAction[1].action.includes(searched)){
+                return searchedAction;
+            }
+        }   else{
+             if(searchedAction[1].action.toLowerCase().includes(searched.toLowerCase())){
+                return searchedAction;
+            }
+        }})
     return result;
 
 }
 
+const search = (searched: string, caseSensitive:boolean) =>{
+    clearSearch(); 
+    if(searched.replace(/\s/g, '') === ''){
+        {
+            return;
+        }
+    }
+    const results = searchFunction(searched, caseSensitive);
+    let headers = new Set();
+    let header: Element;
+    results.forEach(element => {
+        if(!(headers.has(element[0])))
+        {
+            headers.add(element[0]);
+            header = generateHeader(element[0]);
+        }
+        let result = document.createElement('li');
+        result.textContent = element[1].action;
+        header.appendChild(result);
+    });
+}
 
+const searchButton = (searched: string, caseSensitive:boolean) => {
+    console.log(caseSensitive);
+    if(searched.replace(/\s/g, '') === ''){
+        {
+            document.querySelector('.search-wrapper')?.classList.toggle('hidden');
+        }
+    }
+    
+}
 
+const generateHeader = (title: string): Element => {
+    const header = document.createElement('ul');
+    resultRender.appendChild(header);
+    header.id=title;
+    header.textContent=title;
+    return header;
+}
 
-
+const clearSearch = () => {
+    if(resultRender.children.length){
+        [...resultRender.children].forEach( element => element.remove());
+    }
+}
 
 
 
