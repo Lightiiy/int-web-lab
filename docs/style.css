@@ -153,6 +153,7 @@ p {
   margin: 1rem;
   padding: 0 0.5rem;
   width: 100%;
+  height: 2.5rem;
   border-radius: var(--border-radius);
 }
 
@@ -386,7 +387,7 @@ div.form-wrapper {
   text-align: center;
   font-size: 1.5rem;
   padding: 0.5rem;
-  margin: 0.5rem;
+  margin: 1rem;
   border-radius: 100%;
   justify-self: end;
 }
@@ -407,6 +408,7 @@ div.form-wrapper {
 .search-form {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .search-results {
