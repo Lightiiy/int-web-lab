@@ -128,10 +128,10 @@ mainList.addActionToList('test3');
 mainList.addActionToList('test4');
 
 
-altList.addActionToList('dupa');
-altList.addActionToList('dupa2');
-altList.addActionToList('dup3a');
-altList.addActionToList('dup4a');
+altList.addActionToList('testing');
+altList.addActionToList('testing2');
+altList.addActionToList('testing3a');
+altList.addActionToList('testing4a');
 
 listOfListsRender.classList.add('list-of-lists')
 document.querySelector('.lists-wrapper')?.appendChild(listOfListsRender);
