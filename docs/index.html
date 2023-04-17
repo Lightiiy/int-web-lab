@@ -53,6 +53,28 @@
           <h1 class="graveyard-header">Graveyard</h1>
         </div>
       </aside>
+
+      <section class="section-search">
+        <div class="search-wrapper">
+          <form class="search-form">
+            <div class="input-with-checkbox">
+              <input type="text" placeholder="Search through all lists 🕵️" />
+              <label>Aa</label>
+              <input type="checkbox" />
+            </div>
+            <button
+              type="button"
+              class="search-button"
+              style="visibility: visible !important"
+              onclick="searchFunction('test',false)">
+              🔎
+            </button>
+          </form>
+          <div class="search-results">
+            <div class="results-wrapper"></div>
+          </div>
+        </div>
+      </section>
     </main>
     <div id="modal" class="modal hidden">
       <div id="#delete" class="delete-warning">

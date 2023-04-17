@@ -120,6 +120,7 @@ const mainList = new ToDoList('Main List');
 const altList = new ToDoList('Additional List');
 const listOfLists = [mainList, altList];
 const listOfListsRender: Element = document.createElement('ol');
+const resultRender: Element = document.createElement('ol');
 var currList = mainList;
 
 mainList.addActionToList('test');
@@ -133,9 +134,11 @@ altList.addActionToList('testing2');
 altList.addActionToList('testing3a');
 altList.addActionToList('testing4a');
 
-listOfListsRender.classList.add('list-of-lists')
+listOfListsRender.classList.add('list-of-lists');
 document.querySelector('.lists-wrapper')?.appendChild(listOfListsRender);
 
+resultRender.classList.add('result-list');
+document.querySelector('.results-wrapper')?.appendChild(resultRender);
 
 const addListToRender = (title: string) => {
     const newLI = document.createElement('li');
@@ -173,9 +176,17 @@ const formActionAddToList = (list: ToDoList, action: string) =>
 }
 
 const formListAddToLists = (title: string) => {
-    const newList = new ToDoList(title);
-    addListToLists(newList);
-    switchContext(listOfLists.length - 1);
+    if(title.replace(/\s/g, '') === ''){
+        {
+            alert("A list of do's needs a name");
+            return;
+        }
+    }
+    else{
+        const newList = new ToDoList(title);
+        addListToLists(newList);
+        switchContext(listOfLists.length - 1);
+    }
 }
 
 
@@ -189,6 +200,47 @@ const overrideEnter = (event: Event) => {
         }
     }
 }
+
+
+
+
+
+const searchFunction = (searched: string, caseSensitive:boolean) => {
+    var allActions = new Array;
+    listOfLists.forEach(
+        list => {
+            allActions.push(...list.actionList.map((action) => { 
+                return [list.title,action];
+            }))
+        }
+    )
+    const result = allActions.filter(searchedAction =>{
+        if(searchedAction[1].action.includes(searched)){
+            return searchedAction;
+        }
+    })
+    return result;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -235,6 +287,10 @@ $(function(){
                  $('.grave').remove();
             }
     })
+
+    if ($("input[name=action_input]").is(':focus')) {
+      console.log('focused');
+    }
 
 })
 

@@ -88,17 +88,20 @@ const mainList = new ToDoList('Main List');
 const altList = new ToDoList('Additional List');
 const listOfLists = [mainList, altList];
 const listOfListsRender = document.createElement('ol');
+const resultRender = document.createElement('ol');
 var currList = mainList;
 mainList.addActionToList('test');
 mainList.addActionToList('test2');
 mainList.addActionToList('test3');
 mainList.addActionToList('test4');
-altList.addActionToList('dupa');
-altList.addActionToList('dupa2');
-altList.addActionToList('dup3a');
-altList.addActionToList('dup4a');
+altList.addActionToList('testing');
+altList.addActionToList('testing2');
+altList.addActionToList('testing3a');
+altList.addActionToList('testing4a');
 listOfListsRender.classList.add('list-of-lists');
 document.querySelector('.lists-wrapper')?.appendChild(listOfListsRender);
+resultRender.classList.add('result-list');
+document.querySelector('.results-wrapper')?.appendChild(resultRender);
 const addListToRender = (title) => {
     const newLI = document.createElement('li');
     newLI.appendChild(document.createTextNode(title));
@@ -126,9 +129,17 @@ const formActionAddToList = (list, action) => {
     list.addActionToList(action);
 };
 const formListAddToLists = (title) => {
-    const newList = new ToDoList(title);
-    addListToLists(newList);
-    switchContext(listOfLists.length - 1);
+    if (title.replace(/\s/g, '') === '') {
+        {
+            alert("A list of do's needs a name");
+            return;
+        }
+    }
+    else {
+        const newList = new ToDoList(title);
+        addListToLists(newList);
+        switchContext(listOfLists.length - 1);
+    }
 };
 const overrideEnter = (event) => {
     const inputEl = document.querySelector('input[name=action_input]');
@@ -139,6 +150,20 @@ const overrideEnter = (event) => {
             inputEl.value = '';
         }
     }
+};
+const searchFunction = (searched, caseSensitive) => {
+    var allActions = new Array;
+    listOfLists.forEach(list => {
+        allActions.push(...list.actionList.map((action) => {
+            return [list.title, action];
+        }));
+    });
+    const result = allActions.filter(searchedAction => {
+        if (searchedAction[1].action.includes(searched)) {
+            return searchedAction;
+        }
+    });
+    return result;
 };
 $(function () {
     //  function toggleModal(variant: string, index: number = 0){
@@ -177,4 +202,7 @@ $(function () {
             $('.grave').remove();
         }
     });
+    if ($("input[name=action_input]").is(':focus')) {
+        console.log('focused');
+    }
 });
