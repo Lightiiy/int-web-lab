@@ -195,7 +195,6 @@ const overrideEnter = (event: Event) => {
     const inputEl = event.target;
     const input_name = inputEl.getAttribute('name');
     if (event.key === 'Enter'){
-        console.log(input_name);
         switch (input_name)
         {
             case 'action_input':
@@ -274,7 +273,6 @@ const search = (searched: string, caseSensitive:boolean) =>{
 }
 
 const searchButton = (searched: string, caseSensitive:boolean) => {
-    console.log(caseSensitive);
     if(searched.replace(/\s/g, '') === ''){
         {
             document.querySelector('.search-wrapper')?.classList.toggle('hidden');
@@ -322,12 +320,12 @@ $(function(){
             }
     })
 
-    if ($("input[name=action_input]").is(':focus')) {
-      console.log('focused');
-    }
-
+    
 })
 
+// if ($("input[name=action_input]").is(':focus')) {
+//   console.log('focused');
+// }
 
     //  function toggleModal(variant: string, index: number = 0){
     //     console.log(variant);

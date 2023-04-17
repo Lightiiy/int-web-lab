@@ -105,6 +105,7 @@ ol {
 }
 
 li {
+  cursor: pointer;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -177,6 +178,9 @@ p {
   font-size: 0.75rem;
   font-weight: bold;
   color: var(--accent-shadow2);
+}
+.input-with-checkbox:has(input:focus) {
+  background-color: var(--accent-tint1);
 }
 
 /* ************************************************** */
@@ -353,6 +357,7 @@ div.form-wrapper {
 }
 
 #graveyard-wrapper .grave {
+  cursor: pointer;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -425,6 +430,9 @@ div.form-wrapper {
   padding: 1rem;
 }
 
+.search-button:hover {
+  background-color: var(--accent-tint1);
+}
 /* ************************************************** */
 /* MODAL */
 /* ************************************************** */
