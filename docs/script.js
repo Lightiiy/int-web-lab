@@ -99,7 +99,7 @@ altList.addActionToList('testing0a');
 altList.addActionToList('teSTing1a');
 altList.addActionToList('testing2a');
 altList.addActionToList('tEstin3');
-listOfListsRender.classList.add('list-of-lists');
+listOfListsRender.classList.add('list-of-lists', 'custom-scrollbar');
 document.querySelector('.lists-wrapper')?.appendChild(listOfListsRender);
 resultRender.classList.add('result-list');
 document.querySelector('.results-wrapper')?.appendChild(resultRender);

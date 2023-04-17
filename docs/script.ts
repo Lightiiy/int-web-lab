@@ -135,7 +135,7 @@ altList.addActionToList('testing2a');
 altList.addActionToList('tEstin3');
 
 
-listOfListsRender.classList.add('list-of-lists');
+listOfListsRender.classList.add('list-of-lists', 'custom-scrollbar');
 document.querySelector('.lists-wrapper')?.appendChild(listOfListsRender);
 
 resultRender.classList.add('result-list');

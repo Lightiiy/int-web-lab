@@ -306,21 +306,27 @@ div.form-wrapper {
 /* ASIDE - FORM */
 
 .list-of-lists {
+  overflow-y: scroll;
+
   padding: 0 1rem;
+  max-height: 325px;
 }
 
 .side-form {
   display: flex;
+  position: relative;
   z-index: 1;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--background-50opacity);
   border-radius: var(--border-radius);
-  min-height: 475px;
+  height: 475px;
 }
 
 .form-list {
   display: flex;
+  bottom: 0;
+  position: absolute;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -346,6 +352,8 @@ div.form-wrapper {
 .form-list button:hover {
   background-color: var(--accent-tint1);
 }
+
+.list-of-lists
 
 /* ************************************************** */
 /* ASIDE - GRAVEYARD */
