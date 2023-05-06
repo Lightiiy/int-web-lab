@@ -1,0 +1,40 @@
+@use '../../../../assets/styles/variables';
+@use '../../../../assets/styles/generals';
+
+nav {
+  height: 100px;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.nav-cta {
+  padding: 1rem;
+  border-radius: variables.$border-radius;
+  background-color: variables.$accent-2;
+}
+
+.nav-item:link,
+.nav-item:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item:hover,
+.nav-item:active {
+  color: variables.$font-important;
+}
+
+.nav-cta:hover,
+.nav-cta:active {
+  background-color: variables.$font-important;
+  color: white;
+}

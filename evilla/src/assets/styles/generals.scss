@@ -1,0 +1,74 @@
+@use './variables.scss';
+
+html {
+  scroll-behavior: smooth;
+  color: variables.$gray;
+}
+
+/* img{
+  width: 10rem;
+} */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  padding: 1rem 0;
+  position: relative;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: variables.$gray;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  color: variables.$gray;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.mb-2rem {
+  margin-bottom: 2rem;
+}
+
+span {
+  color: variables.$font-important;
+}
+
+.navbar {
+  padding: 0 2rem;
+}
+.section-hero,
+.section-marketing {
+  margin: 3rem;
+}
+
+.grid {
+  display: grid;
+}
+
+.acc-2-button {
+  display: block;
+  background-color: variables.$accent-2;
+  padding: 1rem;
+  border: none;
+  border-radius: variables.$border-radius;
+}
+
+.➡️ {
+  justify-self: end;
+}
