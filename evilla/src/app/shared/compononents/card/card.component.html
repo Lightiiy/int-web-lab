@@ -1,1 +1,22 @@
-<p>card works!</p>
+<div [ngClass]="'card-' + this.variant">
+  <div
+    class="card-img"
+    [ngStyle]="{
+      'background-image': 'url(' + this.housing.image + ')'
+    }"></div>
+  <div class="card-text">
+    <div class="card-bedrooms">
+      <p><i class="fa-solid fa-bed"></i>{{ this.housing.bedrooms }} bedrooms</p>
+    </div>
+    <h3 class="card-street">South Bridge Avenue 64</h3>
+    <p class="card-description">
+      {{ this.housing.description }}
+    </p>
+    <div class="card-cta">
+      <span class="price">{{ this.housing.price }}</span>
+      <button type="button" class="book-button">Book a Meeting</button>
+    </div>
+  </div>
+</div>
+
+<!-- 'background-image': 'url(' + this.housing.image + ')'  -->

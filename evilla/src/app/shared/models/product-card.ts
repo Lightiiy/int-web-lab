@@ -1,4 +1,4 @@
-interface ProductCard {
+export interface ProductCard {
   address: string,
   bedrooms: number,
   image: string,

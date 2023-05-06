@@ -75,86 +75,8 @@
     <h1>Book a house tour to find your dream place!</h1>
   </div>
   <div class="products-examples">
-    <div class="card-large">
-      <div
-        class="card-img"
-        style="background-image: url('./../assets/images/house\ 1.jpg')"></div>
-      <div class="card-text">
-        <div class="card-bedrooms">
-          <p><i class="fa-solid fa-bed"></i> 4 bedrooms</p>
-        </div>
-        <h3 class="card-street">South Bridge Avenue 64</h3>
-        <p class="card-description">
-          With ample natural light and breathtaking views of the surrounding
-          landscape, this is an opportunity to own a truly exceptional property
-          in a prime location.
-        </p>
-        <div class="card-cta">
-          <span class="price">$530 000</span>
-          <button type="button" class="book-button">Book a Meeting</button>
-        </div>
-      </div>
-    </div>
-    <div class="card-smol">
-      <div
-        class="card-img"
-        style="background-image: url('./../assets/images/house\ 2.jpg')"></div>
-      <div class="card-text">
-        <div class="card-bedrooms">
-          <p><i class="fa-solid fa-bed"></i> 3 bedrooms</p>
-        </div>
-        <h3 class="card-street">Grapevine Street 128</h3>
-        <p class="card-description">
-          This breathtaking modern house for sale boasts an open-concept layout,
-          sleek finishes, and expansive windows that offer stunning views of the
-          surrounding landscape
-        </p>
-        <div class="card-cta">
-          <span class="price">$530 000</span>
-          <button type="button" class="book-button">Book a Meeting</button>
-        </div>
-      </div>
-    </div>
-    <div class="card-smol">
-      <div
-        class="card-img"
-        style="background-image: url('./../assets/images/house\ 3.jpg')"></div>
-      <div class="card-text">
-        <div class="card-bedrooms">
-          <p><i class="fa-solid fa-bed"></i> 3 bedrooms</p>
-        </div>
-        <h3 class="card-street">Grapevine Street 128</h3>
-        <p class="card-description">
-          This breathtaking modern house for sale boasts an open-concept layout,
-          sleek finishes, and expansive windows that offer stunning views of the
-          surrounding landscape
-        </p>
-        <div class="card-cta">
-          <span class="price">$530 000</span>
-          <button type="button" class="book-button">Book a Meeting</button>
-        </div>
-      </div>
-    </div>
-    <div class="card-large">
-      <div
-        class="card-img"
-        style="background-image: url('./../assets/images/house\ 4.jpg')"></div>
-      <div class="card-text">
-        <div class="card-bedrooms">
-          <p><i class="fa-solid fa-bed"></i> 3 bedrooms</p>
-        </div>
-        <h3 class="card-street">Grapevine Street 128</h3>
-        <p class="card-description">
-          This breathtaking modern house for sale boasts an open-concept layout,
-          sleek finishes, and expansive windows that offer stunning views of the
-          surrounding landscape
-        </p>
-        <div class="card-cta">
-          <span class="price">$530 000</span>
-          <button type="button" class="book-button">Book a Meeting</button>
-        </div>
-      </div>
-    </div>
+    <app-card [housing]="this.house[0]"></app-card>
+    <app-card [housing]="this.house[1]" [variant]="'large'"></app-card>
   </div>
 </section>
 
