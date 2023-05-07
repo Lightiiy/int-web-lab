@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductCard } from 'src/app/shared/models/product-card';
 import { HousesService } from 'src/app/shared/services/offers.service';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,6 +15,8 @@ export class SearchPageComponent implements OnInit {
   public offerings: ProductCard[] = [];
 
   private subscribtion: Subscription = new Subscription;
+
+  offerSearch!: FormGroup;
   
   constructor(private offersService: HousesService) { }
   
@@ -24,6 +27,26 @@ export class SearchPageComponent implements OnInit {
         this.offerings = offers;
       }
     )
+    this.initForm();
+  }
+
+  private initForm(){
+
+    let offerAddress = '';
+    let offerCity = '';
+    let offerBedroom = '';
+    let offerDescription = '';
+
+    this.offerSearch=new FormGroup({
+      "addressSearch": new FormControl(offerAddress, Validators.required),
+      "citySearch": new FormControl(offerAddress, Validators.required),
+      "bedroomSearch": new FormControl(offerAddress, Validators.required),
+      "descriptionSearch": new FormControl(offerAddress, Validators.required),
+    })
+  }
+
+  onSubmit(){
+    console.log(this.offerSearch);
   }
 
 }

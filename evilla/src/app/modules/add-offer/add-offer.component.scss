@@ -1,0 +1,68 @@
+@use './../../../assets/styles/variables.scss';
+
+.form {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 25% 1fr 25%;
+  background-color: variables.$accent-2;
+  padding: 2rem;
+
+  input,
+  textarea {
+    display: block;
+    height: 2rem;
+    margin: 0.5rem;
+  }
+
+  &-add-offer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+
+    grid-column: 2/3;
+  }
+
+  &-in-line {
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 1;
+    gap: 1rem;
+
+    #cityOffer {
+      flex-grow: 0;
+
+      flex-basis: 60%;
+    }
+
+    #priceOffer {
+      flex-grow: 0;
+      flex-basis: 15%;
+    }
+
+    #bedroomsOffer {
+      flex-grow: 0;
+      max-width: 5rem;
+    }
+  }
+
+  &-image {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    #imageOffer {
+      flex-basis: 75%;
+    }
+  }
+
+  .input-description {
+    height: 15rem;
+  }
+}
+img {
+  width: 100%;
+  height: 100%;
+  grid-column: 2/3;
+}

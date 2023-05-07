@@ -1,9 +1,14 @@
 <div>
   <div class="search-form">
-    <form>
-      <input type="text" />
-      <input type="number" />
-      <input type="text" />
+    <form [formGroup]="offerSearch">
+      <input id="addressSearch" type="text" formControlName="addressSearch" />
+      <input id="citySearch" type="text" formControlName="citySearch" />
+      <input id="bedroomSearch" type="number" formControlName="bedroomSearch" />
+      <input
+        id="descriptionSearch"
+        type="text"
+        formControlName="descriptionSearch" />
+      <button type="submit" class="btn" (click)="onSubmit()">Search</button>
     </form>
   </div>
   <div class="grid search-result">

@@ -1,0 +1,23 @@
+<div class="form">
+  <img [src]="this.newOffer.image" />
+  <form class="form-add-offer" [formGroup]="offerAdd">
+    <input id="addressOffer" type="text" formControlName="addressOffer" />
+    <div class="form-in-line">
+      <input id="cityOffer" type="text" formControlName="cityOffer" />
+      <input id="priceOffer" type="text" formControlName="priceOffer" />
+      <input id="bedroomsOffer" type="number" formControlName="bedroomsOffer" />
+    </div>
+    <div class="form-image">
+      <input id="imageOffer" type="text" formControlName="imageOffer" />
+      <input type="checkbox" />
+    </div>
+    <textarea
+      class="input-description"
+      id="descriptionOffer"
+      type="text"
+      formControlName="descriptionOffer"></textarea>
+    <button type="submit" class="btn" (click)="onSubmit()">
+      Add your offer!
+    </button>
+  </form>
+</div>

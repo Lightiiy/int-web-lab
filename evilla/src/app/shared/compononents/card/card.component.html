@@ -8,7 +8,10 @@
     <div class="card-bedrooms">
       <p><i class="fa-solid fa-bed"></i>{{ this.housing.bedrooms }} bedrooms</p>
     </div>
-    <h3 class="card-street">South Bridge Avenue 64</h3>
+    <h3 class="card-street">
+      {{ this.housing.address }}
+      <span *ngIf="variant !== 'smol'">{{ this.housing.city }} </span>
+    </h3>
     <p class="card-description">
       {{ this.housing.description }}
     </p>
