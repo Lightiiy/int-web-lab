@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, ElementRef,  Input, OnInit, Renderer2 } from '@angular/core';
 import { ProductCard } from '../../models/product-card';
 
 @Component({
@@ -16,10 +16,11 @@ export class CardComponent implements OnInit {
   variant: string = 'smol';
 
 
-  constructor() { }
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit(): void {
-
+    if( this.variant === 'smol')
+    this.renderer.setAttribute(this.el.nativeElement, 'variant', 'smol')
   }
 
 }

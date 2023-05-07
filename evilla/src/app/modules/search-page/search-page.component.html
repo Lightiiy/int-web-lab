@@ -1,0 +1,15 @@
+<div>
+  <div class="search-form">
+    <form>
+      <input type="text" />
+      <input type="number" />
+      <input type="text" />
+    </form>
+  </div>
+  <div class="grid search-result">
+    <app-card
+      *ngFor="let offer of offerings; let i = index"
+      [housing]="offer"
+      variant="large"></app-card>
+  </div>
+</div>

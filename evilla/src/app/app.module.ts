@@ -5,22 +5,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/compononents/navbar/navbar.component';
-import { LandingPageModule } from './modules/landing-page/landing-page.module';
+import { LandingPageComponent } from './modules/landing-page/landing-page.component';
+import { CardComponent } from './shared/compononents/card/card.component';
+import { SearchPageComponent } from './modules/search-page/search-page.component';
+import { HousesService } from './shared/services/offers.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    CardComponent,
+    LandingPageComponent,
+    SearchPageComponent,
   ],
   imports: [
-    LandingPageModule,
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ HousesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
