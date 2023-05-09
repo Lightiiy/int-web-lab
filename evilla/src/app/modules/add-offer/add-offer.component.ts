@@ -17,9 +17,9 @@ export class AddOfferComponent implements OnInit {
   constructor(private offerService: HousesService) { }
 
   ngOnInit(): void {
-    this.newOffer = new ProductCard( '',
+    this.newOffer = new ProductCard( -1,0, '',
     '',
-    0,
+    -1,
     'https://picsum.photos/seed/'+Math.round(Math.random()*10000)+'/1920/1080',
     '',
     0);
@@ -51,12 +51,15 @@ export class AddOfferComponent implements OnInit {
   }
 
   onSubmit(){
+    this.newOffer.id = this.offerService.getOldestId();
     this.newOffer.address = this.offerAdd.value["addressOffer"];
     this.newOffer.city = this.offerAdd.value["cityOffer"];
     this.newOffer.bedrooms = this.offerAdd.value["bedroomsOffer"];
     this.newOffer.description = this.offerAdd.value["descriptionOffer"];
     this.newOffer.price = this.offerAdd.value["priceOffer"];
-    this.offerService.addOffer(this.newOffer);
-
+    this.newOffer.image = this.offerAdd.value["imageOffer"];
+    
+    this.offerService.offers.push(this.newOffer);   
+    this.offerAdd.reset();
   }
 }

@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+---
+
+## TODO
+
+- na pewno zrobic revamp nowych widokow ( css )
+- spojrzec na inputy, ktore potrzebuja validatory oraz odpowiednie zachowanie onSubmit zaleznie od stanu input'ow

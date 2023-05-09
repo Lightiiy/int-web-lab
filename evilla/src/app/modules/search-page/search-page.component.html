@@ -1,14 +1,36 @@
 <div>
   <div class="search-form">
     <form [formGroup]="offerSearch">
-      <input id="addressSearch" type="text" formControlName="addressSearch" />
-      <input id="citySearch" type="text" formControlName="citySearch" />
-      <input id="bedroomSearch" type="number" formControlName="bedroomSearch" />
       <input
+        placeholder="address"
+        id="addressSearch"
+        type="text"
+        formControlName="addressSearch" />
+      <input
+        placeholder="city"
+        id="citySearch"
+        type="text"
+        formControlName="citySearch" />
+      <input
+        placeholder="How many bedrooms min"
+        id="bedroomSearch"
+        type="number"
+        formControlName="bedroomSearch" />
+      <input
+        placeholder="description"
         id="descriptionSearch"
         type="text"
         formControlName="descriptionSearch" />
+      <div *ngFor="let sort of this.searchService.sortingMethods">
+        <label>{{ sort }}</label>
+        <input
+          type="radio"
+          formControlName="sortSearch"
+          [value]="sort"
+          (change)="onChange(sort)" />
+      </div>
       <button type="submit" class="btn" (click)="onSubmit()">Search</button>
+      <button type="submit" class="btn" (click)="onClear()">Clear</button>
     </form>
   </div>
   <div class="grid search-result">
