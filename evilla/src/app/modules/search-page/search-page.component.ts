@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductCard } from 'src/app/shared/models/product-card';
 import { HousesService } from 'src/app/shared/services/offers.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SearchService } from 'src/app/shared/services/search.service';
+import { Validator } from '@angular/forms';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   offerSearch!: FormGroup;
   
-  constructor(private offersService: HousesService, public searchService: SearchService) { }
+  constructor(private offersService: HousesService,
+    public searchService: SearchService,
+    private changeDetector: ChangeDetectorRef,) { }
   
   ngOnInit(): void {
     this.offerings = this.offersService.getOffers();
@@ -33,16 +36,11 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   private initForm(){
 
-    let offerAddress = '';
-    let offerCity = '';
-    let offerBedroom = null;
-    let offerDescription = '';
-
     this.offerSearch=new FormGroup({
-      "addressSearch": new FormControl(offerAddress, ),
-      "citySearch": new FormControl(offerCity, ),
-      "bedroomSearch": new FormControl(offerBedroom, ),
-      "descriptionSearch": new FormControl(offerDescription,),
+      "addressSearch": new FormControl( ),
+      "citySearch": new FormControl(),
+      "bedroomSearch": new FormControl(Validators.pattern('^[1-9][0-9]*$')),
+      "descriptionSearch": new FormControl(),
       "sortSearch": new FormControl(this.searchService.currentSorting),
 
     })
@@ -65,27 +63,27 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     let filtered: ProductCard[] = [...this.offersService.getOffers()];
-    if (this.offerSearch.value.addressSearch !== '' )
+    if (this.offerSearch.value.addressSearch !== null )
     {
         filtered = filtered.filter(offer => {
         let query = this.offerSearch.value.addressSearch.toLowerCase();
         return offer.address.toLowerCase().includes(query);
       })
     }
-     if (this.offerSearch.value.citySearch !== '' )
+     if (this.offerSearch.value.citySearch !== null )
      {
         filtered = filtered.filter(offer => {
         let query = this.offerSearch.value.citySearch.toLowerCase();
         return offer.city.toLowerCase().includes(query);
       })
      }
-     if (this.offerSearch.value.bedroomSearch !== -1 )
+     if (this.offerSearch.value.bedroomSearch !== null )
      {
         filtered = filtered.filter(offer => {
         return offer.bedrooms >= this.offerSearch.value.bedroomSearch;
       })
      }
-      if (this.offerSearch.value.descriptionSearch !== '' )
+      if (this.offerSearch.value.descriptionSearch !== null )
      {
         filtered = filtered.filter(offer => {
         let query = this.offerSearch.value.descriptionSearch.toLowerCase();
@@ -118,6 +116,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   onClear(){
     this.offerings = [...this.offersService.getOffers()];
     this.offerSearch.reset();
+    this.changeDetector.detectChanges();
   }
 
   ngOnDestroy(): void {

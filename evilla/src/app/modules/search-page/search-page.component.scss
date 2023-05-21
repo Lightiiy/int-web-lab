@@ -17,4 +17,28 @@
   background-color: variables.$accent-2-tint;
   margin: 0 2rem;
   padding: 1rem;
+  form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 1rem;
+    row-gap: 2rem;
+  }
+
+  .form-sort-group {
+    display: flex;
+  }
+  .form-buttons {
+    grid-column: 4 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
+
+  .radio-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
 }

@@ -21,16 +21,22 @@
         id="descriptionSearch"
         type="text"
         formControlName="descriptionSearch" />
-      <div *ngFor="let sort of this.searchService.sortingMethods">
-        <label>{{ sort }}</label>
-        <input
-          type="radio"
-          formControlName="sortSearch"
-          [value]="sort"
-          (change)="onChange(sort)" />
+      <div class="form-sort-group">
+        <div
+          *ngFor="let sort of this.searchService.sortingMethods"
+          class="radio-button">
+          <input
+            type="radio"
+            formControlName="sortSearch"
+            [value]="sort"
+            (change)="onChange(sort)" />
+          <label>{{ sort }}</label>
+        </div>
       </div>
-      <button type="submit" class="btn" (click)="onSubmit()">Search</button>
-      <button type="submit" class="btn" (click)="onClear()">Clear</button>
+      <div class="form-buttons">
+        <button type="submit" class="btn" (click)="onSubmit()">Search</button>
+        <button type="submit" class="btn" (click)="onClear()">Clear</button>
+      </div>
     </form>
   </div>
   <div class="grid search-result">

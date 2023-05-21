@@ -1,0 +1,14 @@
+@use '../../../../assets/styles/variables.scss';
+
+.seller {
+  &-wrapper {
+    background-color: variables.$accent-1-tint;
+    height: 100%;
+    border-radius: variables.$border-radius;
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+}

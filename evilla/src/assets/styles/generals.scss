@@ -17,6 +17,11 @@ html {
   font-size: 16px;
 }
 
+button,
+input {
+  display: block;
+}
+
 body {
   padding: 1rem 0;
   position: relative;
@@ -71,4 +76,23 @@ span {
 
 .➡️ {
   justify-self: end;
+}
+
+button,
+input,
+textarea {
+  border-radius: variables.$border-radius;
+  border: none;
+  color: variables.$gray;
+}
+
+button {
+  background-color: variables.$accent-2;
+  padding: 0.5rem 2rem;
+  max-width: 15rem;
+}
+
+input,
+textarea {
+  padding: 0.5rem 1rem;
 }

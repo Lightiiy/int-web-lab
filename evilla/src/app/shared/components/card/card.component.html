@@ -6,7 +6,7 @@
     }"></div>
   <div class="card-text">
     <div class="card-bedrooms">
-      <p><i class="fa-solid fa-bed"></i>{{ this.housing.bedrooms }} bedrooms</p>
+      <p>🛏 {{ this.housing.bedrooms }} bedrooms</p>
     </div>
     <h3 class="card-street">
       {{ this.housing.address }}
@@ -17,7 +17,9 @@
     </p>
     <div class="card-cta">
       <span class="price">{{ this.housing.price }}</span>
-      <button type="button" class="book-button" (click)="onReroute()">Book a Meeting</button>
+      <button type="button" class="book-button" (click)="onReroute()">
+        Book a Meeting
+      </button>
     </div>
   </div>
 </div>
