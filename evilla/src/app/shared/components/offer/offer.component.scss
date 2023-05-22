@@ -3,7 +3,6 @@
 .offer-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   column-gap: 1.5rem;
   row-gap: 1.5rem;
   margin: 1rem;
@@ -29,7 +28,7 @@
 
     textarea {
       align-self: stretch;
-      flex-basis: 500%;
+      flex-basis: 15rem;
       width: 100%;
     }
   }

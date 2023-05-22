@@ -59,7 +59,7 @@ export class AddOfferComponent implements OnInit {
     this.newOffer.price = this.offerAdd.value["priceOffer"];
     this.newOffer.image = this.offerAdd.value["imageOffer"];
     
-    this.offerService.offers.push(this.newOffer);   
+    this.offerService.addOffer(this.newOffer);   
     this.offerAdd.reset();
   }
 }

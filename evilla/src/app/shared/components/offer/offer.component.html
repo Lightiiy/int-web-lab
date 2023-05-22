@@ -1,13 +1,18 @@
 <div class="offer-wrapper">
-  <app-card [housing]="offer"></app-card>
+  <app-card [showButton]="false" [housing]="offer"></app-card>
   <app-business-card [seller]="seller"></app-business-card>
   <form [formGroup]="emailFeedback">
-    <input id="emailAddress" type="text" formControlName="emailAddress" />
+    <input
+      id="emailAddress"
+      type="text"
+      formControlName="emailAddress"
+      placeholder="Your email" />
     <textarea
       class="input-description"
       id="emailContent"
       type="text"
-      formControlName="emailContent"></textarea>
+      formControlName="emailContent"
+      placeholder="Write your email here! C:"></textarea>
     <button type="submit" [disabled]="!this.emailFeedback" (click)="onSubmit()">
       Send
     </button>
