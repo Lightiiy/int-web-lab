@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "piwo-evilla": {
+      "hosting": {
+        "evilla": [
+          "piwo-evilla"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "piwo-evilla"
+  }
+}

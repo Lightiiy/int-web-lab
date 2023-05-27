@@ -15,6 +15,10 @@ import { OfferComponent } from './shared/components/offer/offer.component';
 import { BusinessCardComponent } from './shared/components/business-card/business-card.component';
 import { ApiService } from './shared/services/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -35,6 +39,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [HousesService, SearchService, ApiService],
   bootstrap: [AppComponent]
