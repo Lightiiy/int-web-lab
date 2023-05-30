@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 import { ProductCard } from 'src/app/shared/models/product-card';
 import { HousesService } from 'src/app/shared/services/offers.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -25,12 +25,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,) { }
   
   ngOnInit(): void {
-    this.offerings = this.offersService.getOffers();
-    this.subscribtion = this.offersService.offersChanged.subscribe(
-      offers => {
-        this.offerings = offers;
-      }
-    )
+    this.subscribtion = this.offersService.getOffers$().subscribe((offers: ProductCard[]) => {
+      this.offerings = [...offers];
+    })
     this.initForm();
   }
 
@@ -47,23 +44,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
   
 
-  // if (this.offerSearch.value.citySearch !== '' )
-  //     {
-  //       console.log('dupa2');
-  //     }
-  //      if (this.offerSearch.value.bedroomSearch !== null )
-  //     {
-  //       console.log('dupa3');
-  //     }
-  //      if (this.offerSearch.value.descriptionSearch !== '' )
-  //     {
-  //       console.log('dupa4');
-  //     }
-
-
   onSubmit(){
-    let filtered: ProductCard[] = [...this.offersService.getOffers()];
-    if (this.offerSearch.value.addressSearch !== null )
+    this.offersService.getOffers$().pipe(take(1)).subscribe( offers => { 
+      let filtered = offers;
+      if (this.offerSearch.value.addressSearch !== null )
     {
         filtered = filtered.filter(offer => {
         let query = this.offerSearch.value.addressSearch.toLowerCase();
@@ -91,6 +75,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       })
      }
       this.offerings = filtered;
+    })
+    
   }
 
   onChange(sort: string){
@@ -114,7 +100,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   onClear(){
-    this.offerings = [...this.offersService.getOffers()];
+    this.offersService.getOffers$().subscribe(offers => this.offerings = [...offers]);
     this.offerSearch.reset();
     this.changeDetector.detectChanges();
   }

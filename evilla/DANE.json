@@ -6,7 +6,7 @@
       "address": "South Bridge Avenue 64",
       "bedrooms": 4,
       "city": "New York",
-      "image": "'https://picsum.photos/seed/'+Math.round(Math.random()*10000)+'/1920/1080'",
+      "image": "'https://picsum.photos/seed/123/1920/1080'",
       "description": "With ample natural light and breathtaking views of the surrounding landscape, this is an opportunity to own a truly exceptional property in a prime location.",
       "price": 5300
     },
@@ -16,7 +16,7 @@
       "address": "Palm Springs 256",
       "bedrooms": 3,
       "city": "New York",
-      "image": "'https://picsum.photos/seed/' + Math.round(Math.random()*10000) + '/1920/1080'",
+      "image": "'https://picsum.photos/seed/3245/1920/1080'",
       "description": "With high-end finishes, and state-of-the-art technology, this stunning home offers the perfect blend of luxury and functionality",
       "price": 4900
     },
@@ -26,7 +26,7 @@
       "address": "Rock Valley 512",
       "bedrooms": 4,
       "city": "New York",
-      "image": "'https://picsum.photos/seed/'+Math.round(Math.random()*10000) +'/1920/1080'",
+      "image": "'https://picsum.photos/seed/23/1920/1080'",
       "description": "Enjoy spacious, light-filled rooms that flow seamlessly together, creating an environment that is both inviting and awe-inspiring.",
       "price": 5700
     },
@@ -36,7 +36,7 @@
       "address": "Grapevine Street 128",
       "bedrooms": 3,
       "city": "New York",
-      "image": "'https://picsum.photos/seed/'+Math.round(Math.random()*10000)+'/1920/1080'",
+      "image": "'https://picsum.photos/seed/789/1920/1080'",
       "description": "This breathtaking modern house for sale boasts an open-concept layout, sleek finishes, and expansive windows that offer stunning views of the surrounding landscape",
       "price": 4750
     },
@@ -189,23 +189,109 @@
       "image": "https://picsum.photos/seed/7890/1920/1080",
       "description": "Sophisticated and elegant 2-bedroom apartment located in the heart of Paris. Recently renovated with premium materials and finishes. Features a large balcony overlooking the city. Walking distance to shops, restaurants, and public transportation.",
       "price": 6000
+    },
+    {
+      "id": -1,
+      "idSeller": 0,
+      "address": "12",
+      "city": "12",
+      "bedrooms": 12,
+      "image": "https://picsum.photos/seed/9446/1920/1080",
+      "description": "12",
+      "price": "12"
+    },
+    {
+      "id": 19,
+      "idSeller": 0,
+      "address": "252153",
+      "city": "1234215",
+      "bedrooms": 1234,
+      "image": "https://picsum.photos/seed/3159/1920/1080",
+      "description": "qe2qwdarqwdsafwwqrfafewqtrwqf",
+      "price": "214321"
+    },
+    {
+      "id": 20,
+      "idSeller": 0,
+      "address": "12421421451",
+      "city": "124214142134",
+      "bedrooms": 2134143,
+      "image": "https://picsum.photos/seed/3772/1920/1080",
+      "description": "1241241eqwqrasdfwarqwafdsafrwad",
+      "price": "0214321432141"
+    },
+    {
+      "id": 21,
+      "idSeller": 0,
+      "address": "Q",
+      "city": "Q",
+      "bedrooms": 2,
+      "image": "https://picsum.photos/seed/434/1920/1080",
+      "description": "3",
+      "price": "1"
+    },
+    {
+      "id": 22,
+      "idSeller": 0,
+      "address": "E",
+      "city": "2",
+      "bedrooms": 4,
+      "image": null,
+      "description": "Q",
+      "price": "3"
     }
   ],
   "AUTHORS": [
-    { "id": 0, "name": "user", "email": "placeholder" },
-    { "id": 1, "name": "Jane Doe", "email": "jane.doe@example.com" },
-    { "id": 2, "name": "John Smith", "email": "john.smith@example.com" },
-    { "id": 3, "name": "Alice Brown", "email": "alice.brown@example.com" },
-    { "id": 4, "name": "Bob Johnson", "email": "bob.johnson@example.com" },
-    { "id": 5, "name": "Emily Davis", "email": "emily.davis@example.com" },
+    {
+      "id": 0,
+      "name": "user",
+      "email": "placeholder"
+    },
+    {
+      "id": 1,
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com"
+    },
+    {
+      "id": 2,
+      "name": "John Smith",
+      "email": "john.smith@example.com"
+    },
+    {
+      "id": 3,
+      "name": "Alice Brown",
+      "email": "alice.brown@example.com"
+    },
+    {
+      "id": 4,
+      "name": "Bob Johnson",
+      "email": "bob.johnson@example.com"
+    },
+    {
+      "id": 5,
+      "name": "Emily Davis",
+      "email": "emily.davis@example.com"
+    },
     {
       "id": 6,
       "name": "Michael Wilson",
       "email": "michael.wilson@example.com"
     },
-    { "id": 7, "name": "Sophia Garcia", "email": "sophia.garcia@example.com" },
-    { "id": 8, "name": "Jacob Lee", "email": "jacob.lee@example.com" },
-    { "id": 9, "name": "Emma Martinez", "email": "emma.martinez@example.com" },
+    {
+      "id": 7,
+      "name": "Sophia Garcia",
+      "email": "sophia.garcia@example.com"
+    },
+    {
+      "id": 8,
+      "name": "Jacob Lee",
+      "email": "jacob.lee@example.com"
+    },
+    {
+      "id": 9,
+      "name": "Emma Martinez",
+      "email": "emma.martinez@example.com"
+    },
     {
       "id": 10,
       "name": "Liam Hernandez",

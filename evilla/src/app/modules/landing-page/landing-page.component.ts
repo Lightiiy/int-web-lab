@@ -1,29 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {ProductCard } from './../../shared/models/product-card' 
-import { HOUSING_OFFERS } from 'src/DANE';
 import { HousesService } from 'src/app/shared/services/offers.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, from, take } from 'rxjs';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent implements OnInit, OnDestroy {
 
-  public house: ProductCard[] = [];
+  public offers?: ProductCard[];
 
   private subscribtion: Subscription = new Subscription;
   
-  constructor(private offersService: HousesService) { }
+  constructor(private offersService: HousesService) { 
+  }
   
+
   ngOnInit(): void {
-    this.house = this.offersService.getOffers();
-    this.subscribtion = this.offersService.offersChanged.subscribe(
-      offers => {
-        this.house = offers;
-      }
-    )
+    this.subscribtion = this.offersService.getOffers$().subscribe((offers: ProductCard[]) => {
+      this.offers = offers.slice(0,4);
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.subscribtion.unsubscribe();
   }
 
 }

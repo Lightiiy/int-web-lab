@@ -20,7 +20,7 @@ export class AddOfferComponent implements OnInit {
     this.newOffer = new ProductCard( -1,0, '',
     '',
     -1,
-    'https://picsum.photos/seed/'+Math.round(Math.random()*10000)+'/1920/1080',
+    'https://picsum.photos/seed/'+Math.round(Math.random()*1000)+'/1920/1080',
     '',
     0);
 
@@ -59,7 +59,7 @@ export class AddOfferComponent implements OnInit {
     this.newOffer.price = this.offerAdd.value["priceOffer"];
     this.newOffer.image = this.offerAdd.value["imageOffer"];
     
-    this.offerService.offers.push(this.newOffer);   
+    this.offerService.addOffer(this.newOffer);
     this.offerAdd.reset();
   }
 }

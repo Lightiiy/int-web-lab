@@ -70,15 +70,15 @@
   </div>
 </section>
 
-<section id="tours" name="tours" class="section-products">
+<section id="tours" name="tours" class="section-products" *ngIf="offers">
   <div class="products-title">
     <h1>Book a house tour to find your dream place!</h1>
   </div>
   <div class="products-examples">
-    <app-card [housing]="this.house[0]" variant="large"></app-card>
-    <app-card [housing]="this.house[1]"></app-card>
-    <app-card [housing]="this.house[2]"></app-card>
-    <app-card [housing]="this.house[3]" variant="large"></app-card>
+    <app-card [housing]="this.offers[0]" variant="large"></app-card>
+    <app-card [housing]="this.offers[1]"></app-card>
+    <app-card [housing]="this.offers[2]"></app-card>
+    <app-card [housing]="this.offers[3]" variant="large"></app-card>
   </div>
 </section>
 

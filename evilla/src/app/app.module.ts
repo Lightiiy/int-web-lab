@@ -13,6 +13,8 @@ import { SearchService } from './shared/services/search.service';
 import { AddOfferComponent } from './modules/add-offer/add-offer.component';
 import { OfferComponent } from './shared/components/offer/offer.component';
 import { BusinessCardComponent } from './shared/components/business-card/business-card.component';
+import { ApiUrlService } from './shared/services/apiUrl.service';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,9 @@ import { BusinessCardComponent } from './shared/components/business-card/busines
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [HousesService, SearchService],
+  providers: [HousesService, SearchService, ApiUrlService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

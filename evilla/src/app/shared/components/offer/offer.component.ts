@@ -27,8 +27,8 @@ export class OfferComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
         this.id = this.isNotNull(params.get('id'));
     });
-    this.offer = this.offersService.offers[this.id];
-    this.seller = this.offersService.getSeller(this.id);
+    this.offer = this.offersService.offers$.getValue()[this.id];
+    // this.seller = this.offersService.getSeller(this.id);
     this.innitForm();
   }
 
@@ -48,7 +48,6 @@ export class OfferComponent implements OnInit {
   }
   
   onSubmit(){
-    console.log(this.emailFeedback.value);
     if( this.emailFeedback.value.emailAddress !== 'null' && this.emailFeedback.value.emailContent !== 'null'){
     let feedback = new Mail(this.emailFeedback.value.emailAddress, this.emailFeedback.value.emailContent );
     }
