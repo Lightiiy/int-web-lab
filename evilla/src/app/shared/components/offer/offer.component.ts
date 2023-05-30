@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductCard } from '../../models/product-card';
 import { Seller } from '../../models/seller';
@@ -11,10 +11,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './offer.component.html',
   styleUrls: ['./offer.component.scss']
 })
-export class OfferComponent implements OnInit {
+export class OfferComponent implements OnInit, AfterViewInit {
 
-  constructor(public offersService: HousesService, private route: ActivatedRoute) { }
-
+  constructor(public offersService: HousesService,
+              private route: ActivatedRoute,
+              private render: Renderer2,
+              private elementRef: ElementRef){}
   public id!: number;
 
   public offer!: ProductCard;
@@ -22,6 +24,7 @@ export class OfferComponent implements OnInit {
   public emailFeedback!: FormGroup;
 
   public seller!: Seller;
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -32,14 +35,19 @@ export class OfferComponent implements OnInit {
     this.innitForm();
   }
 
+  
   innitForm(){
     let emailAddress = '';
     let emailContent = '';
-
-      this.emailFeedback = new FormGroup({
-        'emailAddress': new FormControl(emailAddress, Validators.required),
-        'emailContent': new FormControl(emailContent, Validators.required),
-      })
+    
+    this.emailFeedback = new FormGroup({
+      'emailAddress': new FormControl(emailAddress, Validators.required),
+      'emailContent': new FormControl(emailContent, Validators.required),
+    })
+  }
+  
+  ngAfterViewInit(): void {
+    
   }
 
   isNotNull(value: string | null):number {

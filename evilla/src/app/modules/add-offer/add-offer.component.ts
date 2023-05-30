@@ -52,6 +52,7 @@ export class AddOfferComponent implements OnInit {
 
   onSubmit(){
     this.newOffer.id = this.offerService.getOldestId();
+    this.newOffer.idSeller = 0;
     this.newOffer.address = this.offerAdd.value["addressOffer"];
     this.newOffer.city = this.offerAdd.value["cityOffer"];
     this.newOffer.bedrooms = this.offerAdd.value["bedroomsOffer"];

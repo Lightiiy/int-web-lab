@@ -7,7 +7,8 @@
       class="input-description"
       id="emailContent"
       type="text"
-      formControlName="emailContent"></textarea>
+      formControlName="emailContent"
+      #emailMessage></textarea>
     <button type="submit" [disabled]="!this.emailFeedback" (click)="onSubmit()">
       Send
     </button>
