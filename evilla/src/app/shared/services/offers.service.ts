@@ -1,66 +1,38 @@
 import { ProductCard } from "../models/product-card";
-import { find, Observable, Subject, take } from "rxjs";
+import { HOUSING_OFFERS } from "src/DANE";
+import { SELLERS } from "src/DANE_SPRZEDAWCE";
+import { Subject } from "rxjs";
 import { Seller } from "../models/seller";
-import { ApiService } from "./api.service";
-import { Injectable } from "@angular/core";
 
-@Injectable()
 export class HousesService{
 
-  constructor( private api: ApiService){
-  }
-    
   public offersChanged = new Subject<ProductCard[]>;
-    
-  public offers: Observable<ProductCard> = this.api.getHouseOfferingsFromApi$().pipe();
-    
-  private sellers: Observable<Seller> =  this.api.getAuthorsFromApi$().pipe();
 
-  public oldestId = 0;
+  public offers = HOUSING_OFFERS;
+
+  private sellers = SELLERS;
+
+  public oldestId = this.setOldestId();
 
   getOffers(){
-    console.log(this.offers);
     return this.offers;
   }
 
   addOffer(newOffer: ProductCard){
-    this.api.postNewHouseOffering(newOffer);
+    this.offers.push(newOffer);
+    this.offersChanged.next(this.offers.slice());
   }
 
+  setOldestId():number {
+   return Math.max(...this.offers.map( obj => obj.id));
+  }
 
   getOldestId(): number{
     this.oldestId++;
     return this.oldestId;
   }
 
-  getSeller(id: number): Seller | undefined{
-    this.sellers.pipe(find( offer => offer.id === id), take(1)).subscribe(
-      author => {
-        if (author !== undefined)
-        {
-          return author;
-        }
-        else{
-          return undefined;
-        }
-      }
-    )
-    return undefined;
-  }
-  
-
-  getOfferByIndex(id: number): ProductCard | undefined{
-    this.offers.pipe(find( offer => offer.id === id), take(1)).subscribe(
-      offer => {
-        if (offer !== undefined)
-        {
-          return offer;
-        }
-        else{
-          return undefined;
-        }
-      }
-    )
-    return undefined;
+  getSeller(id: number): Seller{
+    return this.sellers[this.offers[id].idSeller];
   }
 }

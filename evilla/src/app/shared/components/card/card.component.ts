@@ -16,9 +16,6 @@ export class CardComponent implements OnInit {
   @Input()
   variant: string = 'smol';
 
-  @Input()
-  showButton: boolean = true;
-
 
   constructor(private renderer: Renderer2,
      private el: ElementRef,

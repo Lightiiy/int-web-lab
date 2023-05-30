@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductCard } from '../../models/product-card';
 import { Seller } from '../../models/seller';
 import { HousesService } from '../../services/offers.service';
 import { Mail } from '../../models/mail';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-offer',
@@ -13,7 +13,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class OfferComponent implements OnInit {
 
-  constructor(public offersService: HousesService, private activeRoute: ActivatedRoute, private router: Router) { }
+  constructor(public offersService: HousesService, private route: ActivatedRoute) { }
 
   public id!: number;
 
@@ -24,21 +24,11 @@ export class OfferComponent implements OnInit {
   public seller!: Seller;
 
   ngOnInit(): void {
-    this.activeRoute.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {
         this.id = this.isNotNull(params.get('id'));
     });
-    if (this.offersService.getOfferByIndex(this.id) !== undefined){
-      this.offer = <ProductCard>this.offersService.getOfferByIndex(this.id);
-    }
-    else{
-      alert("Offer with this id doesn't exist");
-    }
-    if (this.offersService.getSeller(this.id) !== undefined){
-      this.seller = <Seller>this.offersService.getSeller(this.id);
-    }
-    else{
-      alert("Seller with this id doesn't exist");
-    }
+    this.offer = this.offersService.offers[this.id];
+    this.seller = this.offersService.getSeller(this.id);
     this.innitForm();
   }
 
@@ -47,8 +37,8 @@ export class OfferComponent implements OnInit {
     let emailContent = '';
 
       this.emailFeedback = new FormGroup({
-        'emailAddress': new FormControl(emailAddress, [Validators.required, Validators.email]),
-        'emailContent': new FormControl(emailContent, [Validators.required]),
+        'emailAddress': new FormControl(emailAddress, Validators.required),
+        'emailContent': new FormControl(emailContent, Validators.required),
       })
   }
 

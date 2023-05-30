@@ -15,8 +15,6 @@ import { Validator } from '@angular/forms';
 export class SearchPageComponent implements OnInit, OnDestroy {
 
   public offerings: ProductCard[] = [];
-  
-  public offeringsUnfiltered: ProductCard[] = [];
 
   private subscribtion: Subscription = new Subscription;
 
@@ -27,10 +25,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,) { }
   
   ngOnInit(): void {
-    this.subscribtion = this.offersService.offers.subscribe(
+    this.offerings = this.offersService.getOffers();
+    this.subscribtion = this.offersService.offersChanged.subscribe(
       offers => {
-        this.offerings.push(offers);
-        this.offeringsUnfiltered.push(offers);
+        this.offerings = offers;
       }
     )
     this.initForm();
@@ -64,7 +62,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
 
   onSubmit(){
-    let filtered: ProductCard[] =[...this.offeringsUnfiltered];
+    let filtered: ProductCard[] = [...this.offersService.getOffers()];
     if (this.offerSearch.value.addressSearch !== null )
     {
         filtered = filtered.filter(offer => {
@@ -116,7 +114,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   onClear(){
-    this.offerings = [...this.offeringsUnfiltered];
+    this.offerings = [...this.offersService.getOffers()];
     this.offerSearch.reset();
     this.changeDetector.detectChanges();
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductCard } from './../../shared/models/product-card' 
+import { HOUSING_OFFERS } from 'src/DANE';
 import { HousesService } from 'src/app/shared/services/offers.service';
 import { Subscription } from 'rxjs';
 
@@ -17,8 +18,11 @@ export class LandingPageComponent implements OnInit {
   constructor(private offersService: HousesService) { }
   
   ngOnInit(): void {
-    this.subscribtion = this.offersService.getOffers().subscribe(
-      offer => {this.house.push(offer)}
+    this.house = this.offersService.getOffers();
+    this.subscribtion = this.offersService.offersChanged.subscribe(
+      offers => {
+        this.house = offers;
+      }
     )
   }
 

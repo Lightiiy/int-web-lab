@@ -16,12 +16,8 @@
       {{ this.housing.description }}
     </p>
     <div class="card-cta">
-      <span class="price">{{ this.housing.price | currency }}</span>
-      <button
-        *ngIf="this.showButton"
-        type="button"
-        class="book-button"
-        (click)="onReroute()">
+      <span class="price">{{ this.housing.price }}</span>
+      <button type="button" class="book-button" (click)="onReroute()">
         Book a Meeting
       </button>
     </div>

@@ -13,13 +13,6 @@ import { SearchService } from './shared/services/search.service';
 import { AddOfferComponent } from './modules/add-offer/add-offer.component';
 import { OfferComponent } from './shared/components/offer/offer.component';
 import { BusinessCardComponent } from './shared/components/business-card/business-card.component';
-import { ApiService } from './shared/services/api.service';
-import { HttpClientModule } from '@angular/common/http';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
 
 @NgModule({
   declarations: [
@@ -38,12 +31,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
   ],
-  providers: [HousesService, SearchService, ApiService],
+  providers: [HousesService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

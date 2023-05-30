@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "server": "json-server -p 4100 --watch DANE.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
