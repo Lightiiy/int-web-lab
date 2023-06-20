@@ -10,6 +10,7 @@ import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import UserPage from "./Pages/UserPage";
+import SafetyInsanity from "./Pages/SafetyInsanity";
 
 import EventBus from "./Services/EventBus";
 
@@ -50,6 +51,12 @@ const App = () => {
           <li className="nav-item">
             <Link to={"/"} className="nav-link">
               Home
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to={"/data"} className="nav-link">
+              Data
             </Link>
           </li>
 
@@ -116,6 +123,7 @@ const App = () => {
           <Route path="/register" element={<Register/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/user" element={<UserPage/>} />
+          <Route path="/data" element={<SafetyInsanity/>} />
           {/* <Route path="/mod" element={<BoardModerator/>} />
           <Route path="/admin" element={<BoardAdmin/>} /> */}
           <Route path="/*" element={<h3>Nothing hill</h3>} />

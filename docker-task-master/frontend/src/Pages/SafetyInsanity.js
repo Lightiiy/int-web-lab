@@ -3,13 +3,12 @@ import React, { useState, useEffect } from "react";
 import UserService from "../Services/UserService";
 import EventBus from "../Services/EventBus";
 
-const UserPage = () => {
+const SafetyInsanity = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    UserService.getUserPage().then(
+    UserService.getUsers().then(
       (response) => {
-        console.log(response)
         setContent(response.data.message);
       },
       (error) => {
@@ -38,4 +37,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default SafetyInsanity;

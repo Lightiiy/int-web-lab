@@ -21,3 +21,17 @@ def insert_new_user(user_data):
     user_data_from_db['_id'] = str(user_data_from_db['_id'])
 
     return user_data_from_db
+
+
+def get_data():
+    # Connect to MongoDB
+    app_db = client.python_app_db
+
+    users_collection = app_db.users
+
+
+    # Retrieve data from MongoDB
+    data = list(users_collection.find())
+
+    # Return the data as JSON response
+    return data

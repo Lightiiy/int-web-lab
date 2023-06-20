@@ -11,5 +11,10 @@ Repozytorium zawierające kod źródłowy wykonanych zadań w ramach zajęć kur
 ## Docker run dla backend  
 `` docker run -d -p 5000:5000 --name python-container back-dock ``
 
-## DOcker run dla frontend  
+## Docker run dla frontend  
 `` docker run -d -p 3000:3000 --name fronted-container front-dock ``
+
+## Docker compose
+Po przejsciu do folder /docker-task-master wywołać komende:
+`` docker-compose up ``
+Nie wymaga wczesniejszej budowy kontenerow z dockerfile

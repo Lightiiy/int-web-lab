@@ -63,6 +63,8 @@ def signup_user():
     return jsonify({"message": "registered successfully"})
 
 
+
+
 @app.route("/signin", methods=["POST"])
 def login_user():
     data = request.get_json()
@@ -89,6 +91,10 @@ def login_user():
 def user_page(user):
     pprint.pprint(user)
     return jsonify({"message": f"You are correctly authenticated as `{user.get('username')}`"})
+
+@app.route('/data', methods=['GET'])
+def get_user_data():
+    return jsonify(mongo_functions.get_data())
 
 @app.route("/add_user")
 def add_user():
