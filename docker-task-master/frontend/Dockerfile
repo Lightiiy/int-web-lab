@@ -1,4 +1,4 @@
-FROM node:18.15.0
+FROM node:19
 
 RUN mkdir -p /main
 
@@ -6,9 +6,11 @@ COPY ./package.json /main/
 
 WORKDIR /main
 
-RUN npm install
+RUN npm --force install
 
 COPY ./ /main/
 
-ENTRYPOINT [ "npm", "start", "--host", "0000" ]
+EXPOSE 3000
+
+ENTRYPOINT [ "npm", "start"]
 
